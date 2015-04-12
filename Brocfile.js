@@ -10,5 +10,7 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 
 //datatables
 app.import('bower_components/datatables/media/css/jquery.dataTables.css');
+app.import('bower_components/datatables/media/css/jquery.dataTables.bootstrap.css');
 app.import('bower_components/datatables/media/js/jquery.dataTables.js');
+app.import('bower_components/datatables/media/js/jquery.dataTables.bootstrap.js');
 module.exports = app.toTree();
