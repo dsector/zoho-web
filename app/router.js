@@ -10,7 +10,10 @@ export default Router.map(function() {
 
   this.route('crm', function() {
     this.route('zoho', function() {
-      this.route('potentials');
+      this.route('potentials', function(){
+        this.route('view', {path: '/:potential_id'});
+      });
+
     });
   });
 });

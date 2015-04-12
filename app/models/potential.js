@@ -5,5 +5,6 @@ export default DS.Model.extend({
   owner: DS.attr(),
   probability: DS.attr(),
   contract: DS.attr(),
-  contractAmount: DS.attr
+  contractAmount: DS.attr(),
+  closingDate: DS.attr()
 });
