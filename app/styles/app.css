@@ -1,0 +1,16 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.main-container {
+  min-height: 550px;
+}
+
+.zoho-container {
+  margin-top: 20px;
+}

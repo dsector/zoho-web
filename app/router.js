@@ -6,4 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
+  this.route('login');
+
+  this.route('crm', function() {
+    this.route('zoho', function() {
+      this.route('potentials');
+    });
+  });
 });
