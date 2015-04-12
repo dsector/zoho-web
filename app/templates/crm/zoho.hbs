@@ -1,10 +1,11 @@
 <ul class="nav nav-pills pull-left">
-    <li role="presentation" class="active">{{#link-to 'crm.zoho' }}Home{{/link-to}}</li>
-    <li role="presentation">{{#link-to 'crm.zoho.potentials'}}Potentials{{/link-to}}</li>
+    {{#link-to 'crm.zoho.index' tagName='li' href=false}}<a {{bind-attr href="view.href"}}>Home</a>{{/link-to}}
+    {{#link-to 'crm.zoho.potentials' tagName='li' href=false}}<a {{bind-attr href='view.href'}}>Potentials</a>{{/link-to}}
+
 </ul>
 <div class="clearfix"></div>
-<div class="container zoho-container">
-    <div class="row margin-top-20">
+<div class="zoho-container">
+    <div class="margin-top-20">
         {{outlet}}
     </div>
 </div>

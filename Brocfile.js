@@ -8,4 +8,7 @@ var app = new EmberApp();
 app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 
+//datatables
+app.import('bower_components/datatables/media/css/jquery.dataTables.css');
+app.import('bower_components/datatables/media/js/jquery.dataTables.js');
 module.exports = app.toTree();
