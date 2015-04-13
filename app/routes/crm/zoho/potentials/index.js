@@ -6,6 +6,6 @@ export default Ember.Route.extend({
   },
 
   model: function () {
-    return this.store.findAll('potential');
+    return this.store.find('potential');
   }
 });

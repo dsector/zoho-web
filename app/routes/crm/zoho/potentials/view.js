@@ -6,5 +6,9 @@ export default Ember.Route.extend({
     this.render('crm.zoho.potentials.view', {
       into: 'crm.zoho.potentials'
     });
+  },
+
+  model: function(params){
+    return this.store.find('potential', params.potential_id);
   }
 });
