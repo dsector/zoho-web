@@ -18,3 +18,14 @@ li a {
 .zoho-container {
   margin-top: 20px;
 }
+
+table.dataTable thead .sorting_asc:after {
+  content: none;
+}
+table.dataTable thead .sorting_desc:after {
+  content: none;
+}
+table.dataTable thead .sorting:after {
+  content: none;
+}
+
