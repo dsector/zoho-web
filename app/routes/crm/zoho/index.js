@@ -1,5 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+/*
+ var Route = AuthenticatedRoute.Route.extend({
 
-});
+ });
+
+ export default Route;
+ */
+
+export default Ember.Route.extend({});
+

@@ -19,7 +19,7 @@
     <tbody>
     {{#each potential in potentials}}
         <tr>
-            <td>{{#link-to 'crm.zoho.potentials.view' potential.id}}{{potential.potentialName}}{{/link-to}}</td>
+            <td>{{#link-to 'proposal.view' potential.id}}{{potential.potentialName}}{{/link-to}}</td>
             <td>{{potential.probability}}%</td>
             <td>{{potential.contractAmount}}</td>
             <td>{{potential.contract}}</td>

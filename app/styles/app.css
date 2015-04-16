@@ -1,3 +1,6 @@
+@import "arrow.nav.css";
+@import "smart-admin.css";
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -27,5 +30,9 @@ table.dataTable thead .sorting_desc:after {
 }
 table.dataTable thead .sorting:after {
   content: none;
+}
+
+.nav-wizard {
+  margin-bottom:20px;
 }
 

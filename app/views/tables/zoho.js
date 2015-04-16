@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
   templateName: 'views/tables/zoho',
+  layoutName: 'views/widget',
+  title: 'Customer Lookup - step 1',
 
   didInsertElement: function () {
     Ember.$('#zoho-table').dataTable({

@@ -1,0 +1,36 @@
+<section id="widget-grid" class="">
+
+    <!-- row -->
+    <div class="row">
+        <article class="col-sm-12 sortable-grid ui-sortable">
+            <!-- new widget -->
+            <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-togglebutton="false"
+                 data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"
+                 data-widget-deletebutton="false" role="widget">
+
+                <header role="heading">
+                    <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+
+                    <h2>{{ view.title }} </h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div class="no-padding" role="content">
+
+                    <!-- end widget edit box -->
+                    <div class="widget-body">
+                      {{yield}}
+                    </div>
+
+                </div>
+                <!-- end widget div -->
+            </div>
+            <!-- end widget -->
+
+        </article>
+    </div>
+
+    <!-- end row -->
+
+</section>

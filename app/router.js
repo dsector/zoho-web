@@ -16,4 +16,7 @@ export default Router.map(function() {
 
     });
   });
+  this.route('proposal', function() {
+    this.route('view', {path: '/:potential_id'});
+  });
 });
