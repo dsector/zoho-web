@@ -17,6 +17,10 @@ export default Router.map(function() {
     });
   });
   this.route('proposal', function() {
-    this.route('view', {path: '/:potential_id'});
+    //this.route('view', {path: '/:potential_id'});
+    this.route('item', {path: '/:potential_id'});
   });
+  this.route('get-started');
+  this.route('about');
+  this.route('presentation');
 });

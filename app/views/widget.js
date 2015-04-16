@@ -1,9 +1,26 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-  templateName: 'views/widget',
-  attributeBindings: ['cacat'],
-  cacat: function(){
-    console.log(this.get('cacat'));
-  }.property()
+  layoutName: 'views/widget',
+
+  didInsertElement: function () {
+
+    console.log("called once");
+
+    $('.collapse').collapse();
+
+    /*
+    Ember.$('#widget-grid').jarvisWidgets({
+      widgets: '.jarviswidget',
+      localStorage: false
+    });
+    */
+  },
+
+  collapse: function(){
+    if(this.get('collapsed')){
+      return 'in';
+    }
+    return '';
+  }.property('collapsed')
 });

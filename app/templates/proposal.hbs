@@ -1,39 +1,16 @@
-<ul class="nav nav-pills nav-wizard">
-    <li class="active"><a href="#" data-toggle="tab">Customer Lookup</a>
-        <div class="nav-arrow"></div>
-    </li>
-    <li>
-        <div class="nav-wedge"></div>
-        <a href="#" data-toggle="tab">Energy Efficiency</a>
+{{view "proposal/breadcrumb"}}
 
-        <div class="nav-arrow"></div>
-    </li>
-    <li>
-        <div class="nav-wedge"></div>
-        <a href="#" data-toggle="tab">Project Design</a>
+<section id="widget-grid">
 
-        <div class="nav-arrow"></div>
-    </li>
-    <li>
-        <div class="nav-wedge"></div>
-        <a href="#" data-toggle="tab">Proposal Review</a>
+    <div class="step-container">
+      {{ view "proposal/list" }}
+    </div>
 
-        <div class="nav-arrow"></div>
-    </li>
-    <li>
-        <div class="nav-wedge"></div>
-        <a href="#" data-toggle="tab">Company Presentation</a>
+    <div class="step-container">
+      {{outlet "proposal"}}
+    </div>
 
-        <div class="nav-arrow"></div>
-    </li>
-    <li>
-        <div class="nav-wedge"></div>
-        <a href="#" data-toggle="tab">Solution Presentation</a></li>
-</ul>
+    {{outlet "proposal-item"}}
 
-<div class="step-container">
-  {{ view "tables/zoho" }}
-</div>
 
-{{outlet "proposal"}}
-
+</section>
