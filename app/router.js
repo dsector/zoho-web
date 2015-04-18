@@ -23,4 +23,5 @@ export default Router.map(function() {
   this.route('get-started');
   this.route('about');
   this.route('presentation');
+  this.route('setup');
 });

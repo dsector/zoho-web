@@ -11,8 +11,6 @@
 </div>
 
 <div class="step-container">
-  {{#link-to 'proposal.loading' type="button" class="btn btn-primary"}}Generate PDF{{/link-to}}
-
-    <a href="#" type="button" class="btn btn-danger">Save</a>
+  {{ view "proposal/presentation" }}
 </div>
 {{outlet}}
