@@ -11,8 +11,6 @@ export default Widget.extend({
     this._super();
     console.log("view called!");
 
-
-
     Ember.$(".editable").editable({
       success: function (response, newValue) {
       }
