@@ -20,7 +20,9 @@ export default Router.map(function() {
     //this.route('view', {path: '/:potential_id'});
     this.route('item', {path: '/:potential_id'});
   });
-  this.route('get-started');
+  this.route('get-started', function() {
+    this.route('item', {path: '/:potential_id'});
+  });
   this.route('about');
   this.route('presentation');
   this.route('setup');
