@@ -1,14 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.View.extend({
-  layoutName: 'views/widget',
-
+export default Ember.Component.extend({
   didInsertElement: function () {
 
-    console.log("called once");
-
     $('.collapse').collapse();
-
   },
 
   collapse: function(){
