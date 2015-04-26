@@ -39,3 +39,7 @@ table.dataTable thead .sorting:after {
 .footer {
   margin-top:20px;
 }
+
+.hidden-inputs {
+  display:none;
+}

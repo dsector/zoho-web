@@ -5,9 +5,11 @@ export default Ember.Controller.extend({
   test: 'some nice data',
 
   actions: {
-    proposal:function(){
+    saveProposalToApi:function(){
       console.log('111111');
     }
+
   }
+
 
 });
