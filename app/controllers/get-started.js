@@ -6,7 +6,21 @@ export default Ember.Controller.extend({
 
   actions: {
     saveProposalToApi:function(){
-      console.log('111111');
+
+      var proposal = this.get('proposal');
+
+      var self = this;
+
+      var saveSuccess = function(prop){
+        console.log(prop);
+        self.set('proposal', prop);
+      }
+
+      var saveFail = function(){
+
+      }
+
+      proposal.save().then(saveSuccess);
     }
 
   }

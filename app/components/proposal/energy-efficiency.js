@@ -10,6 +10,19 @@ export default Ember.Component.extend({
    }.observes('energy-efficiency-value'),
    */
 
+  didInsertElement: function () {
+
+    Ember.$('#pool-pump-fields').validate({
+      rules: {
+        'existing-pool-pump': {
+          required: true,
+          minlength: 2
+        }
+      }
+    });
+
+  },
+
   poolpump: undefined,
   aerosol: undefined,
   solar: undefined,
@@ -46,7 +59,7 @@ export default Ember.Component.extend({
   }.observes('solar'),
 
   actions: {
-    updateData: function(){
+    updateData: function () {
       this.sendAction('update');
     }
   }

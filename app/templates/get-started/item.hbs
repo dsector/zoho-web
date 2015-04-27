@@ -1,26 +1,24 @@
-<form id="proposal-form">
-    <div class="step-container">
-      {{#widget-collspandable title="Potential" widget-id="potential-widget"}}
-        {{ proposal/view-table model=model }}
-      {{/widget-collspandable}}
-    </div>
+<div class="step-container">
+  {{#widget-collspandable title="Potential" widget-id="potential-widget"}}
+    {{ proposal/view-table model=model }}
+  {{/widget-collspandable}}
+</div>
 
-    <div class="step-container">
-      {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" collapsed="true"}}
-        {{proposal/energy-efficiency update="saveProposalToApi"}}
-      {{/widget-collspandable}}
-    </div>
+<div class="step-container">
+  {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" collapsed="true"}}
+    {{proposal/energy-efficiency update="saveProposalToApi" proposal=proposal }}
+  {{/widget-collspandable}}
+</div>
 
-    <div class="step-container">
-      {{#widget-collspandable title="Project Design" widget-id="project-design-widget" collapsed="true"}}
-        {{proposal/project-design update="saveProposalToApi"}}
-      {{/widget-collspandable}}
-    </div>
+<div class="step-container">
+  {{#widget-collspandable title="Project Design" widget-id="project-design-widget" collapsed="true"}}
+    {{proposal/project-design update="saveProposalToApi"}}
+  {{/widget-collspandable}}
+</div>
 
-    <div class="step-container">
-      {{#widget-collspandable title="Presentation" widget-id="action-buttons-widget"}}
-        {{proposal/action-buttons update="saveProposalToApi"}}
-      {{/widget-collspandable}}
-    </div>
-</form>
+<div class="step-container">
+  {{#widget-collspandable title="Presentation" widget-id="action-buttons-widget"}}
+    {{proposal/action-buttons update="saveProposalToApi"}}
+  {{/widget-collspandable}}
+</div>
 {{outlet}}

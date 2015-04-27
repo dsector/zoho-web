@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    firstvalue: DS.attr(),
-    othervalue: DS.attr()
+    existingPoolPump: DS.attr(),
+    newPoolPump: DS.attr(),
+    hoursUsed: DS.attr()
 });

@@ -2,7 +2,28 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-  didInsertElement: function(){
-    console.log('elem inserted ok!');
+  didInsertElement: function () {
+
+    this._super();
+
+    console.log('bbb');
+
+    /*
+    Ember.$("#existing-pool-pump").rules('add', {
+      minlength:2,
+      required: true
+    });
+    */
+
+    //Ember.$('#proposal-form').validate();
+
+    //var rules = Ember.$('.proposal-form').rules();
+    //console.log(rules);
+
+
+    Ember.$(".editable").editable({
+      success: function (response, newValue) {
+      }
+    });
   }
 });

@@ -25,4 +25,8 @@ app.import('vendor/jarvis.min.js');
 app.import('vendor/d3chart/d3.min.js');
 app.import('vendor/d3chart/d3pie.min.js');
 
+//jquery-validation
+app.import('bower_components/jquery-validation/dist/jquery.validate.js');
+app.import('bower_components/jquery-validation/dist/additional-methods.js');
+
 module.exports = app.toTree();
