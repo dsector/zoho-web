@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Energy from 'zoho-web/models/energy-efficiency';
 
 export default Ember.Component.extend({
 
@@ -10,7 +11,21 @@ export default Ember.Component.extend({
    }.observes('energy-efficiency-value'),
    */
 
+  /*
+  watcher: function(){
+    console.log('really???');
+  }.observes('energy.existingPoolPump'),
+  */
+
+
   didInsertElement: function () {
+    /*
+    Energy.reopen({
+      smt: function () {
+        console.log('aaaaaadddd');
+      }.observes('existingPoolPump')
+    });
+    */
 
     Ember.$('#pool-pump-fields').validate({
       rules: {
@@ -60,7 +75,7 @@ export default Ember.Component.extend({
 
   actions: {
     updateData: function () {
-      this.sendAction('update');
+      this.sendAction('update', this.get('energy'));
     }
   }
 

@@ -5,9 +5,11 @@ export default Ember.Controller.extend({
   test: 'some nice data',
 
   actions: {
-    saveProposalToApi:function(){
+    saveProposalToApi:function(energy){
 
       var proposal = this.get('proposal');
+
+      proposal.set('energy', this.get('energy'));
 
       var self = this;
 
@@ -22,7 +24,6 @@ export default Ember.Controller.extend({
 
       proposal.save().then(saveSuccess);
     }
-
   }
 
 

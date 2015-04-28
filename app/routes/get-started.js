@@ -9,6 +9,8 @@ export default Ember.Route.extend({
     controller.set('proposal', this.store.createRecord('proposal', {
       sample: 'dadadadvvv'
     }));
+
+    controller.set('energy', this.store.createRecord('energy-efficiency'));
   },
 
   model: function () {
