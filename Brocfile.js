@@ -29,4 +29,9 @@ app.import('vendor/d3chart/d3pie.min.js');
 app.import('bower_components/jquery-validation/dist/jquery.validate.js');
 app.import('bower_components/jquery-validation/dist/additional-methods.js');
 
+//pacejs
+//app.import('vendor/pace.min.js');
+app.import('bower_components/nprogress/nprogress.js');
+app.import('bower_components/nprogress/nprogress.css');
+
 module.exports = app.toTree();

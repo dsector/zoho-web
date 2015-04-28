@@ -15,6 +15,7 @@
     "bootstrap": "~3.3.4",
     "datatables": "~1.10.6",
     "x-editable": "~1.5.1",
-    "jquery-validation": "~1.13.1"
+    "jquery-validation": "~1.13.1",
+    "nprogress": "~0.1.6"
   }
 }

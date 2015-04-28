@@ -12,11 +12,11 @@
 
         <div class="form-group">
             <label for="new-pool-pump-draw" class="control-label">New Pool Pump Draw</label>
-            {{ input type="text" class="form-control" id="new-pool-pump-draw" placeholder="New Pool Pump Draw" focus-out="updateData" }}
+            {{ input type="text" value=energy.newPoolPump class="form-control" name="new-pool-pump" id="new-pool-pump" placeholder="New Pool Pump Draw" focus-out="updateData" }}
         </div>
         <div class="form-group">
-            <label for="hours-used-each-month" class="control-label">Hours used each month</label>
-            {{ input type="text" class="form-control" id="hours-used-each-month" placeholder="Hours used each month" focus-out="updateData" }}
+            <label for="hours-used" class="control-label">Hours used each month</label>
+            {{ input type="text" value=energy.hoursUsed class="form-control" name="hours-used" id="hours-used" placeholder="Hours used each month" focus-out="updateData" }}
         </div>
     </form>
     <div class="checkbox">
@@ -26,8 +26,8 @@
     </div>
     <form id="aerosol-fields" class="hidden-inputs">
         <div class="form-group">
-            <label for="hours-used-each-month" class="control-label">Percent of Heating or Cooling Usage (percentage)</label>
-            <input type="text" class="form-control" id="hours-used-each-month" placeholder="Percentage" value="25">
+            <label for="aerosol-percentage" class="control-label">Percent of Heating or Cooling Usage (percentage)</label>
+            {{ input type="text" class="form-control" id="aerosol-percentage" name="aerosol-percentage" placeholder="Percentage" value="25" }}
         </div>
     </form>
     <div class="checkbox">
@@ -37,8 +37,8 @@
     </div>
     <form id="solar-fields" class="hidden-inputs">
          <div class="form-group">
-            <label for="hours-used-each-month" class="control-label">Kilowatt Hours</label>
-            <input type="text" class="form-control" id="hours-used-each-month" placeholder="Kilowatt Hours">
+            <label for="solar-hours-used" class="control-label">Kilowatt Hours</label>
+            {{ input type="text" class="form-control" id="solar-hours-used" placeholder="Kilowatt Hours" }}
         </div>
     </form>
 </div>

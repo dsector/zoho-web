@@ -30,12 +30,28 @@ export default Ember.Component.extend({
     Ember.$('#pool-pump-fields').validate({
       rules: {
         'existing-pool-pump': {
-          required: true,
-          minlength: 2
+          minlength: 1,
+          number: true
+        },
+        'new-pool-pump': {
+          minlength: 1,
+          number: true
+        },
+        'hours-used': {
+          minlength: 1,
+          number: true
+        },
+        'aerosol-percentage': {
+          minlength: 1,
+          number: true,
+          required: true
+        },
+        'solar-hours-used': {
+          minlength: 1,
+          number: true
         }
       }
     });
-
   },
 
   poolpump: undefined,
@@ -45,9 +61,21 @@ export default Ember.Component.extend({
   poolPumpCheckbox: function () {
     var checkbox = this.get('poolpump');
 
+    var required_fields = ['#existing-pool-pump', '#new-pool-pump', '#hours-used']
+
     if (checkbox) {
       Ember.$('#pool-pump-fields').show();
+      //make some fields required
+      for(var f=0; f<required_fields.length; f++ ){
+        Ember.$(required_fields[f]).rules('add', {required: true});
+      }
+
     } else {
+      //make some fields required
+      for(var i=0; i<required_fields.length; i++){
+        Ember.$(required_fields[i]).rules('remove', 'required');
+      }
+
       Ember.$('#pool-pump-fields').hide();
     }
 
@@ -75,7 +103,7 @@ export default Ember.Component.extend({
 
   actions: {
     updateData: function () {
-      this.sendAction('update', this.get('energy'));
+      this.sendAction('update', {key: 'energy', value: this.get('energy')});
     }
   }
 
