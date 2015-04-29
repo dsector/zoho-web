@@ -7,5 +7,5 @@ export default DS.Model.extend({
 
   aerosolPercentage: DS.attr(),
 
-  solarKilowatt: DS.attr()
+  solarHoursUsed: DS.attr()
 })

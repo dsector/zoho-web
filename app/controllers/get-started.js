@@ -7,6 +7,12 @@ export default Ember.Controller.extend({
   actions: {
     saveProposalToApi:function(obj){
 
+      //console.log(obj);
+
+      if(obj.key=='design'){
+        console.log(obj.value.get('pricePerWatt'));
+      }
+
       //show load bar
       NProgress.inc();
 
@@ -20,9 +26,10 @@ export default Ember.Controller.extend({
 
       var self = this;
 
-      var saveSuccess = function(prop){
+      var saveSuccess = function(model){
         //console.log(prop);
-        self.set('proposal', prop);
+        //self.set(obj.key, model);
+        //console.log(obj.key);
         NProgress.done();
       }
 

@@ -1,14 +1,16 @@
 <div>
-    <div class="form-group">
-        <label for="syste-size-input">System size</label>
-        <input type="text" class="form-control" id="system-size-input" placeholder="System size">
-    </div>
-    <div class="form-group">
-        <label for="system-production-input">System production</label>
-        <input type="text" class="form-control" id="system-production-input" placeholder="System production">
-    </div>
-    <div class="form-group">
-        <label for="price-per-watt">Price per watt</label>
-        <input type="text" class="form-control" id="price-per-watt" placeholder="Price per watt">
-    </div>
+    <form id="project-design-form">
+        <div class="form-group">
+            <label for="syste-size-input">System size</label>
+          {{ input type="text" value=project-design.systemSize class="form-control" name="system-size-input" id="system-size-input" placeholder="System size" focus-out="updateData" }}
+        </div>
+        <div class="form-group">
+            <label for="system-production-input">System production</label>
+          {{ input type="text" value=project-design.systemProduction class="form-control" name="system-production-input" id="system-production-input" placeholder="System production" focus-out="updateData" }}
+        </div>
+        <div class="form-group">
+            <label for="price-per-watt">Price per watt</label>
+          {{ input type="text" value=project-design.pricePerWatt class="form-control" name="price-per-watt" id="price-per-watt" placeholder="Price per watt" focus-out="updateData" }}
+        </div>
+    </form>
 </div>

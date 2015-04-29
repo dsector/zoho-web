@@ -11,6 +11,8 @@ export default Ember.Route.extend({
     }));
 
     controller.set('energy', this.store.createRecord('energy-efficiency'));
+
+    controller.set('project-design', this.store.createRecord('proposal/project-design'));
   },
 
   model: function () {

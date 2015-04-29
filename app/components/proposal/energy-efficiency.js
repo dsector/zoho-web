@@ -12,22 +12,22 @@ export default Ember.Component.extend({
    */
 
   /*
-  watcher: function(){
-    console.log('really???');
-  }.observes('energy.existingPoolPump'),
-  */
+   watcher: function(){
+   console.log('really???');
+   }.observes('energy.existingPoolPump'),
+   */
 
 
   didInsertElement: function () {
     /*
-    Energy.reopen({
-      smt: function () {
-        console.log('aaaaaadddd');
-      }.observes('existingPoolPump')
-    });
-    */
+     Energy.reopen({
+     smt: function () {
+     console.log('aaaaaadddd');
+     }.observes('existingPoolPump')
+     });
+     */
 
-    Ember.$('#pool-pump-fields').validate({
+    Ember.$('#energy-fields').validate({
       rules: {
         'existing-pool-pump': {
           minlength: 1,
@@ -43,8 +43,7 @@ export default Ember.Component.extend({
         },
         'aerosol-percentage': {
           minlength: 1,
-          number: true,
-          required: true
+          number: true
         },
         'solar-hours-used': {
           minlength: 1,
@@ -66,15 +65,19 @@ export default Ember.Component.extend({
     if (checkbox) {
       Ember.$('#pool-pump-fields').show();
       //make some fields required
-      for(var f=0; f<required_fields.length; f++ ){
+      /*
+      for (var f = 0; f < required_fields.length; f++) {
         Ember.$(required_fields[f]).rules('add', {required: true});
       }
+      */
 
     } else {
       //make some fields required
-      for(var i=0; i<required_fields.length; i++){
+      /*
+      for (var i = 0; i < required_fields.length; i++) {
         Ember.$(required_fields[i]).rules('remove', 'required');
       }
+      */
 
       Ember.$('#pool-pump-fields').hide();
     }
@@ -103,7 +106,9 @@ export default Ember.Component.extend({
 
   actions: {
     updateData: function () {
-      this.sendAction('update', {key: 'energy', value: this.get('energy')});
+      if (Ember.$("#energy-fields").valid()) {
+        this.sendAction('update', {key: 'energy', value: this.get('energy')});
+      }
     }
   }
 
