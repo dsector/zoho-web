@@ -6,24 +6,26 @@
             Potential Name
         </th>
         <th data-hide="phone">
-            Probability
+            Address
         </th>
-        <th>Contract Amount</th>
+        <th>Utility</th>
         <th data-hide="phone,tablet">
             <i class="fa fa-fw txt-color-blue hidden-md hidden-sm hidden-xs"></i>
-            Contract
+            Rate Schedule
         </th>
-        <th data-hide="phone,tablet">Closing Date</th>
+        <th data-hide="phone,tablet">Average Bill</th>
+        <th data-hide="phone,tablet">Anual Usage</th>
     </tr>
     </thead>
     <tbody>
     {{#each potential in potentials}}
         <tr>
             <td>{{#link-to 'get-started.item' potential.id}}{{potential.potentialName}}{{/link-to}}</td>
-            <td>{{potential.probability}}%</td>
-            <td>{{potential.contractAmount}}</td>
-            <td>{{potential.contract}}</td>
-            <td>{{potential.closingDate}}</td>
+            <td>{{potential.address}}</td>
+            <td>{{potential.utility}}</td>
+            <td>{{potential.rateSchedule}}</td>
+            <td>{{potential.averageBill}}</td>
+            <td>{{potential.anualUsage}}</td>
         </tr>
     {{/each}}
     </tbody>

@@ -24,16 +24,20 @@ export default Ember.Controller.extend({
       //we should be able to get the current potential here
       proposal.set('potential', this.model);
 
+      //console.log(proposal.get('potential').get('address'));
+      //console.log(proposal.get('potential').get('id'));
       var self = this;
 
       var saveSuccess = function(model){
         //console.log(prop);
-        //self.set(obj.key, model);
+        self.set('proposal', model);
+        console.log(model.get('id'));
         //console.log(obj.key);
         NProgress.done();
       }
 
       var saveFail = function(){
+        console.log('saving failed!!!');
         //todo :)
       }
 

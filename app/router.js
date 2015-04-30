@@ -21,7 +21,9 @@ export default Router.map(function() {
     this.route('item', {path: '/:potential_id'});
   });
   this.route('get-started', function() {
-    this.route('item', {path: '/:potential_id'});
+    this.route('item', {path: '/:potential_id'}, function() {
+      this.route('proposal');
+    });
   });
   this.route('about');
   this.route('presentation');
