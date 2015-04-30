@@ -21,6 +21,8 @@ export default Ember.Controller.extend({
       var proposal = this.get('proposal');
       proposal.set(obj.key, obj.value);
 
+      console.log("the id is = ", this.get('proposal').get('id'));
+
       //we should be able to get the current potential here
       proposal.set('potential', this.model);
 
@@ -32,6 +34,8 @@ export default Ember.Controller.extend({
         //console.log(prop);
         self.set('proposal', model);
         console.log(model.get('id'));
+
+        //self.transitionToRoute('get-started.item.proposal', model.get('id'));
         //console.log(obj.key);
         NProgress.done();
       }
@@ -44,6 +48,4 @@ export default Ember.Controller.extend({
       proposal.save().then(saveSuccess);
     }
   }
-
-
 });
