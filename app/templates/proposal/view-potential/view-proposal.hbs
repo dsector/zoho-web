@@ -6,7 +6,7 @@
             <tbody>
               <tr>
                   <td class="">Pool Pump Savings</td>
-                  <td>{{ formulas/pump-formula energy=model.energy }}</td>
+                  <td>{{ formulas/pump-formula energy=proposal.energy }}</td>
               </tr>
             </tbody>
         </table>
@@ -18,13 +18,13 @@
     <div class="col-md-8">
         <div class="step-container">
           {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" }}
-            {{ proposal/energy-efficiency update="saveProposalToApi" energy=model.energy }}
+            {{ proposal/energy-efficiency update="saveProposalToApi" energy=proposal.energy }}
           {{/widget-collspandable}}
         </div>
 
         <div class="step-container">
           {{#widget-collspandable title="Project Design" widget-id="project-design-widget" }}
-            {{proposal/project-design update="saveProposalToApi" project-design=model.design}}
+            {{proposal/project-design update="saveProposalToApi" project-design=proposal.design}}
           {{/widget-collspandable}}
         </div>
 

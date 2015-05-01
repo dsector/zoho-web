@@ -19,6 +19,19 @@ export default Ember.Component.extend({
 
 
   didInsertElement: function () {
+
+    var energy = this.get('energy');
+
+    console.log(energy.hoursUsed);
+
+    if(
+      energy.hoursUsed != null &&
+      energy.newPoolPump != null &&
+      energy.existingPoolPump != null
+    ) {
+      Ember.$("#pool-pump-fields").show();
+    }
+
     /*
      Energy.reopen({
      smt: function () {
@@ -60,7 +73,9 @@ export default Ember.Component.extend({
   poolPumpCheckbox: function () {
     var checkbox = this.get('poolpump');
 
-    var required_fields = ['#existing-pool-pump', '#new-pool-pump', '#hours-used']
+    var required_fields = ['#existing-pool-pump', '#new-pool-pump', '#hours-used'];
+
+
 
     if (checkbox) {
       Ember.$('#pool-pump-fields').show();
