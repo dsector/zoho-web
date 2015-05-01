@@ -22,10 +22,26 @@ export default Ember.Route.extend({
   },
 
   deactivate: function() {
+    /*
     this.store.unloadAll('proposal');
     this.store.unloadAll('potential');
     this.store.unloadAll('proposal/project-design');
     this.store.unloadAll('energy-efficiency');
+    */
+    //this.store.unloadRecord(this.get('proposal'));
+
+    var proposals = this.store.all('proposal');
+
+    proposals.forEach(function(i){
+      i.unloadRecord();
+    });
+
+    var potentials = this.store.all('potential');
+
+    potentials.forEach(function(i){
+      i.unloadRecord();
+    });
+
 
     /*
     this.store.find('proposal', '').then(function (proposal) {
