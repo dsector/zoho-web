@@ -17,8 +17,9 @@ export default Router.map(function() {
     });
   });
   this.route('proposal', {path: 'proposal-lookup'}, function() {
-    this.route('view', {path: '/:potential_id'});
-    //this.route('item', {path: '/:potential_id'});
+    this.route('view-potential', {path: 'proposal/:potential_id'}, function(){
+      this.route('view-proposal', {path: 'proposal/:proposal_id'})
+    });
   });
   this.route('get-started', function() {
     this.route('item', {path: '/potential/:potential_id'});

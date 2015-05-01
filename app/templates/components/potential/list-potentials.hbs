@@ -6,26 +6,15 @@
             Potential Name
         </th>
         <th data-hide="phone">
-            Address
+            Proposals count
         </th>
-        <th>Utility</th>
-        <th data-hide="phone,tablet">
-            <i class="fa fa-fw txt-color-blue hidden-md hidden-sm hidden-xs"></i>
-            Rate Schedule
-        </th>
-        <th data-hide="phone,tablet">Average Bill</th>
-        <th data-hide="phone,tablet">Anual Usage</th>
     </tr>
     </thead>
     <tbody>
     {{#each potential in potentials}}
         <tr>
             <td>{{#link-to viewroute potential.id}}{{potential.potentialName}}{{/link-to}}</td>
-            <td>{{potential.address}}</td>
-            <td>{{potential.utility}}</td>
-            <td>{{potential.rateSchedule}}</td>
-            <td>{{potential.averageBill}}</td>
-            <td>{{potential.anualUsage}}</td>
+            <td>{{ potential.proposalsLength }}</td>
         </tr>
     {{/each}}
     </tbody>

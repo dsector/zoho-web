@@ -1,1 +1,25 @@
-{{yield}}
+<table id="{{ table-id }}" class="table table-striped table-bordered table-hover" width="100%">
+    <thead>
+    <tr>
+        <th>
+            <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
+            Potential Name
+        </th>
+        <th data-hide="phone">
+            Creation date
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each proposal in proposals}}
+        <tr>
+            <td>{{#link-to 'proposal.view-potential.view-proposal' proposal.id}}{{proposal.id}}{{/link-to}}</td>
+            <td>01-05-2015 17:32</td>
+            <td>Incomplete</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

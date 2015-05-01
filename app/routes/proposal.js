@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 
   setupController: function(controller, proposals){
     controller.set('proposals', proposals);
-    controller.set('potentials', this.store.find('potential'));
+    controller.set('potentials', this.store.all('potential'));
 
   },
 

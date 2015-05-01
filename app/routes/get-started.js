@@ -26,6 +26,12 @@ export default Ember.Route.extend({
     this.store.unloadAll('potential');
     this.store.unloadAll('proposal/project-design');
     this.store.unloadAll('energy-efficiency');
+
+    /*
+    this.store.find('proposal', '').then(function (proposal) {
+      console.log(proposal);
+    });
+    */
     //this.store.destroy();
 
   }
