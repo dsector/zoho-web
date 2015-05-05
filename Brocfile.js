@@ -34,4 +34,9 @@ app.import('bower_components/jquery-validation/dist/additional-methods.js');
 app.import('bower_components/nprogress/nprogress.js');
 app.import('bower_components/nprogress/nprogress.css');
 
+//Chart.js
+app.import('bower_components/Chart.js/Chart.js');
+app.import('bower_components/Chart.js/src/Chart.Bar.js');
+app.import('bower_components/Chart.js/src/Chart.Radar.js');
+
 module.exports = app.toTree();

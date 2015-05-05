@@ -14,6 +14,18 @@ export default Ember.Route.extend({
   }
 
   /*
+  actions: {
+    viewPresentation: function(){
+      console.log("rendereeeed");
+      return this.render('setup', {
+        //into: 'application',
+        outlet: 'modal'
+      });
+    }
+  }
+  */
+
+  /*
   activate: function(){
     this.store.unloadAll('potential');
     this.store.unloadAll('proposal/project-design');

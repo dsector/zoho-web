@@ -25,5 +25,11 @@ export default Ember.Component.extend({
       success: function (response, newValue) {
       }
     });
+
+    Ember.$(".editable").each(function(){
+      if(Ember.$(this).text()==''){
+        Ember.$(this).html('none');
+      }
+    });
   }
 });

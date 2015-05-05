@@ -16,6 +16,7 @@
     "datatables": "~1.10.6",
     "x-editable": "~1.5.1",
     "jquery-validation": "~1.13.1",
-    "nprogress": "~0.1.6"
+    "nprogress": "~0.1.6",
+    "Chart.js": "~1.0.2"
   }
 }
