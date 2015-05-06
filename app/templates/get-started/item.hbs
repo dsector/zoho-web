@@ -11,6 +11,12 @@
 </div>
 
 <div class="step-container">
+  {{#widget-collspandable title="Utility" widget-id="utility-widget" collapsed="true"}}
+    {{ proposal/utility-widget update="saveProposalToApi" proposal=proposal }}
+  {{/widget-collspandable}}
+</div>
+
+<div class="step-container">
   {{#widget-collspandable title="Project Design" widget-id="project-design-widget" collapsed="true"}}
     {{proposal/project-design update="saveProposalToApi" project-design=project-design}}
   {{/widget-collspandable}}
