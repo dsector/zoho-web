@@ -5,8 +5,6 @@ export default Ember.View.extend({
 
   didInsertElement: function () {
 
-    console.log("called once");
-
     $('.collapse').collapse();
 
   },

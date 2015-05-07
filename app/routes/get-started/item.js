@@ -10,25 +10,27 @@ export default Ember.Route.extend({
   setupController: function(controller, potential) {
     controller.set('model', potential);
 
-    var utility = potential.get('utilityUsage');
+    controller.set('proposal', this.store.createRecord('proposal', {
+      //utilityUsage: this.createRecord('')
+      potential: potential
+    }));
 
-    console.log("UUUUUUUUUUU");
-    console.log(utility);
+    var utility = potential.get('utilityUsage');
 
     if (typeof utility == 'undefined' || utility == null) {
       potential.set('utilityUsage', this.store.createRecord('potential/utility'));
 
-      var utility = potential.get('utilityUsage');
+      utility = potential.get('utilityUsage');
 
       utility.set('usageCalendar', this.store.createRecord('potential/calendar'));
       utility.set('billCalendar', this.store.createRecord('potential/calendar'));
-
     }
 
+  },
 
-
-
+  actions: {
+    willTransition: function(transition){
+      this.store.unloadAll('proposal');
+    }
   }
-
-
 });

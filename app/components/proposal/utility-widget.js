@@ -8,7 +8,5 @@ export default Ember.Component.extend({
     var utilityUsage = potential.get('utilityUsage');
 
     //utilityUsage.set('electricUtility', 'bayern');
-
-    console.log(utilityUsage);
   }
 });

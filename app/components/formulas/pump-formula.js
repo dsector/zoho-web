@@ -9,10 +9,7 @@ export default Ember.Component.extend({
   },
 
   watchEnergy: function () {
-    console.log('xxx');
     var energy = this.get('energy');
-
-    console.log(energy);
 
     if (
       energy != null &&

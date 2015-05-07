@@ -17,12 +17,9 @@ export default Ember.Component.extend({
    }.observes('energy.existingPoolPump'),
    */
 
-
   didInsertElement: function () {
 
     var energy = this.get('energy');
-
-    console.log(energy.hoursUsed);
 
     if(
       energy.hoursUsed != null &&

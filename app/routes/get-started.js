@@ -8,9 +8,7 @@ export default Ember.Route.extend({
   setupController: function (controller, potentials) {
     controller.set('potentials', potentials);
 
-    controller.set('proposal', this.store.createRecord('proposal', {
-      //utilityUsage: this.createRecord('')
-    }));
+
 
     controller.set('energy', this.store.createRecord('energy-efficiency'));
 
@@ -27,34 +25,47 @@ export default Ember.Route.extend({
     return this.store.findAll('potential');
   },
 
-  deactivate: function() {
+  deactivate: function () {
     /*
-    this.store.unloadAll('proposal');
-    this.store.unloadAll('potential');
-    this.store.unloadAll('proposal/project-design');
-    this.store.unloadAll('energy-efficiency');
-    */
+     this.store.unloadAll('proposal');
+     this.store.unloadAll('potential');
+     this.store.unloadAll('proposal/project-design');
+     this.store.unloadAll('energy-efficiency');
+     */
     //this.store.unloadRecord(this.get('proposal'));
 
-    var proposals = this.store.all('proposal');
+     var proposals = this.store.all('proposal');
 
-    proposals.forEach(function(i){
-      i.unloadRecord();
-    });
+     proposals.forEach(function(i){
+     i.unloadRecord();
+     });
 
-    var potentials = this.store.all('potential');
+     var potentials = this.store.all('potential');
 
-    potentials.forEach(function(i){
-      i.unloadRecord();
-    });
+     potentials.forEach(function(i){
+     i.unloadRecord();
+     });
 
 
     /*
-    this.store.find('proposal', '').then(function (proposal) {
-      console.log(proposal);
-    });
-    */
+     this.store.find('proposal', '').then(function (proposal) {
+     console.log(proposal);
+     });
+     */
     //this.store.destroy();
 
+  },
+
+  actions: {
+    willTransition: function (transition) {
+      /*
+      this.store.unloadAll('proposal');
+      this.store.unloadAll('potential');
+      this.store.unloadAll('proposal/project-design');
+      this.store.unloadAll('energy-efficiency');
+      */
+      console.log("TTTEEE");
+    }
   }
+
 });

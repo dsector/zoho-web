@@ -4,12 +4,18 @@ export default Ember.Controller.extend({
 
   test: 'some nice data',
 
+  /**
+   * init controller
+   */
+  init: function () {
+  },
+
   actions: {
     /**
      * this action will save a proposal to rest api
      * @param obj
      */
-    saveProposalToApi:function(obj){
+    saveProposalToApi: function (obj) {
 
       //show load bar
       NProgress.inc();
@@ -26,29 +32,43 @@ export default Ember.Controller.extend({
       //console.log(proposal.get('potential').get('id'));
       var self = this;
 
-      var saveSuccess = function(model){
+      var saveSuccess = function (model) {
         //console.log(prop);
         self.set('proposal', model);
 
         NProgress.done();
       }
 
-      var saveFail = function(){
+      var saveFail = function () {
         //todo :)
       }
 
       proposal.save().then(saveSuccess);
     },
 
-    savePotentialToApi: function(data){
+    savePotentialToApi: function (data) {
       var potential = data.potential;
 
       potential.save();
     }
   },
 
+  potentialChanged: function () {
 
-  potentialChanged: function(){
-    console.log('daaaaa2232323232') ;
+    var potential = this.get('model');
+
+    //this should be fucking created when this is executed
+    var proposal = this.get('proposal');
+    //proposal.set('potential', potential);
+
+    //console.log(proposal);
+
+  }.observes('model'),
+
+  proposalChanged: function () {
+    console.log("FFFFFFFFFFFFFFFFFF");
+
   }.observes('proposal')
+
+
 });

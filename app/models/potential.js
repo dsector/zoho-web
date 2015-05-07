@@ -9,7 +9,6 @@ export default DS.Model.extend({
   averageBill: DS.attr(),
   anualUsage: DS.attr(),
 
-
   //ooo
   utilityUsage: DS.attr(),
 

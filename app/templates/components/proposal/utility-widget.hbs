@@ -1,21 +1,6 @@
 <div class="row">
     <div class="col-md-6">
         <form id="project-design-form" novalidate="novalidate">
-            <div class="form-group">
-                <label for="potential-electric-utility">Electric Utility</label>
-                {{input id="potential-electric-utility" class="ember-view ember-text-field form-control input-sm" placeholder="Electric Utility"
-                       name="system-size-input" type="text" value=potential.utilityUsage.electricityUsage}}
-            </div>
-            <div class="form-group">
-                <label for="potential-rate">Rate Schedule</label>
-                {{input id="potential-rate" class="ember-view ember-text-field form-control input-sm"
-                       placeholder="Rate Schedule" name="system-production-input" type="text" value=potential.utilityUsage.rateSchedule}}
-            </div>
-            <div class="form-group">
-                <label for="potential-annual">Annual KWH</label>
-                {{input id="potential-annual" class="ember-view ember-text-field form-control input-sm" placeholder="Annual KWH"
-                       name="price-per-watt" type="text" value=potential.utilityUsage.annualKwh}}
-            </div>
              <div class="form-group">
                 <label for="utility-jan-usage">Jan Usage</label>
                 {{input id="utility-jan-usage" class="ember-view ember-text-field form-control input-sm" placeholder="Jan Usage"
@@ -89,11 +74,6 @@
                 <label for="high-electric-bill">High Electric Bill</label>
                 {{input id="high-electric-bill" class="ember-view ember-text-field form-control input-sm"
                        placeholder="High Electric Bill" name="system-production-input" type="text" value=potential.utilityUsage.highElectricityBill}}
-            </div>
-            <div class="form-group">
-                <label for="average-electric-bill">Average Electric Bill</label>
-                {{input id="average-electric-bill" class="ember-view ember-text-field form-control input-sm" placeholder="Average Electric Bill"
-                       name="price-per-watt" type="text" value=potential.utilityUsage.averageElectricityBill}}
             </div>
             <div class="form-group">
                 <label for="potential-jan-bill">Jan Bill</label>
