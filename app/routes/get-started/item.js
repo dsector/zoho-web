@@ -10,14 +10,21 @@ export default Ember.Route.extend({
   setupController: function(controller, potential) {
     controller.set('model', potential);
 
-    if (typeof potential.get('utilityUsage') == 'undefined') {
+    var utility = potential.get('utilityUsage');
+
+    console.log("UUUUUUUUUUU");
+    console.log(utility);
+
+    if (typeof utility == 'undefined' || utility == null) {
       potential.set('utilityUsage', this.store.createRecord('potential/utility'));
 
       var utility = potential.get('utilityUsage');
 
       utility.set('usageCalendar', this.store.createRecord('potential/calendar'));
       utility.set('billCalendar', this.store.createRecord('potential/calendar'));
+
     }
+
 
 
 

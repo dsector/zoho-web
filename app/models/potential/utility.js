@@ -2,7 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 
-  electricUtility: DS.attr(),
+  electricityUsage: DS.attr(),
   rateSchedule: DS.attr(),
   anualKwh: DS.attr(),
   lowElectricityBill: DS.attr(),
