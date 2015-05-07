@@ -5,13 +5,11 @@ export default Ember.Controller.extend({
   test: 'some nice data',
 
   actions: {
+    /**
+     * this action will save a proposal to rest api
+     * @param obj
+     */
     saveProposalToApi:function(obj){
-
-      //console.log(obj);
-
-      if(obj.key=='design'){
-        console.log(obj.value.get('pricePerWatt'));
-      }
 
       //show load bar
       NProgress.inc();
@@ -20,8 +18,6 @@ export default Ember.Controller.extend({
       //attach this to current proposal
       var proposal = this.get('proposal');
       proposal.set(obj.key, obj.value);
-
-      console.log("the id is = ", this.get('proposal').get('id'));
 
       //we should be able to get the current potential here
       proposal.set('potential', this.model);
@@ -33,19 +29,26 @@ export default Ember.Controller.extend({
       var saveSuccess = function(model){
         //console.log(prop);
         self.set('proposal', model);
-        console.log(model.get('id'));
 
-        //self.transitionToRoute('get-started.item.proposal', model.get('id'));
-        //console.log(obj.key);
         NProgress.done();
       }
 
       var saveFail = function(){
-        console.log('saving failed!!!');
         //todo :)
       }
 
       proposal.save().then(saveSuccess);
+    },
+
+    savePotentialToApi: function(data){
+      var potential = data.potential;
+
+      potential.save();
     }
-  }
+  },
+
+
+  potentialChanged: function(){
+    console.log('daaaaa2232323232') ;
+  }.observes('proposal')
 });

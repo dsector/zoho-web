@@ -9,12 +9,18 @@ export default Ember.Route.extend({
     controller.set('potentials', potentials);
 
     controller.set('proposal', this.store.createRecord('proposal', {
-      sample: 'dadadadvvv'
+      //utilityUsage: this.createRecord('')
     }));
 
     controller.set('energy', this.store.createRecord('energy-efficiency'));
 
     controller.set('project-design', this.store.createRecord('proposal/project-design'));
+
+    controller.set('utility', this.store.createRecord('potential/utility'));
+
+    controller.set('usageCalendar', this.store.createRecord('potential/calendar'))
+
+    controller.set('billCalendar', this.store.createRecord('potential/calendar'));
   },
 
   model: function () {
