@@ -10,7 +10,14 @@
                 <h4 class="modal-title" id="myLargeModalLabel">Proposal Presentation<a class="anchorjs-link" href="#myLargeModalLabel"><span class="anchorjs-icon"></span></a></h4>
             </div>
             <div class="modal-body">
-              {{ charts/barchart-potential chart-id="barchart-potfffff" on-modal="#presentation-modal"}}
+                <h1>Bar Chart</h1>
+              {{
+              charts/barchart-potential
+              chart-id="barchart-potfffff"
+              firstCalendar=proposal.utilityUsage.usageCalendar
+              secondCalendar=proposal.utilityUsage.billCalendar
+              on-modal="#presentation-modal"
+              }}
 
               {{ charts/piechart-potential chart-id="piechart-potential" on-modal="#presentation-modal"}}
 

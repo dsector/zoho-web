@@ -18,7 +18,7 @@
 
 <div class="step-container">
   {{#widget-collspandable title="Presentation" widget-id="action-buttons-widget"}}
-    {{proposal/action-buttons update="saveProposalToApi"}}
+    {{proposal/action-buttons update="saveProposalToApi" proposal=model}}
   {{/widget-collspandable}}
 </div>
 {{outlet}}
