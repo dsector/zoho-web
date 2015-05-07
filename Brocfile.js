@@ -11,10 +11,10 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css.map');
 
 //datatables
 app.import('bower_components/datatables/media/css/jquery.dataTables.css');
-app.import('bower_components/datatables/media/css/jquery.dataTables.bootstrap.css');
+app.import('vendor/datatables/dataTables.bootstrap.css');
 
 app.import('bower_components/datatables/media/js/jquery.dataTables.js');
-app.import('bower_components/datatables/media/js/jquery.dataTables.bootstrap.js');
+app.import('vendor/datatables/dataTables.bootstrap.js');
 
 //ember assets compilation
 app.import('bower_components/ember/ember-template-compiler.js');
