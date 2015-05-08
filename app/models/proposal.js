@@ -6,6 +6,27 @@ export default DS.Model.extend({
   energy: DS.attr(),
   design: DS.attr(),
 
+
+  poolPumpSaving: function(){
+    var energy = this.get('energy');
+
+    if (
+      energy != null &&
+      energy.hoursUsed != null &&
+      energy.existingPoolPump != null &&
+      energy.newPoolPump != null
+    ) {
+      var c = (energy.existingPoolPump-energy.newPoolPump);
+      c = c*energy.hoursUsed;
+      c = c*30;
+      c = c/1000;
+
+      return c;
+    } else {
+      return 0;
+    }
+  }.property('energy'),
+
   aerosolMonthsSaving: function () {
     var potential = this.get('potential');
     var utilityUsage = potential.get('utilityUsage');
@@ -42,6 +63,8 @@ export default DS.Model.extend({
   aerosolSavingTotal: function(){
     var months = this.get('aerosolMonthsSaving');
 
+
+
     var total = 0;
     for(var m in months){
       if(months[m] != null && !isNaN(months[m])){
@@ -56,7 +79,64 @@ export default DS.Model.extend({
   usageAfterEnergyAndSolar: function(){
 
     var potential = this.get('potential');
+    var poolPumpSaving = this.get('poolPumpSaving');
+    var aerosolSavings = this.get('aerosolMonthsSaving');
+    var utilityUsage = potential.get('utilityUsage');
+    utilityUsage = utilityUsage.usageCalendar;
+    var solarProduction = this.get('solarProduction');
+    var aerosolValue = 0;
+    var resultMonths = {};
 
+    if(typeof aerosolSavings.jan == 'undefined'){
+      return 0;
+    }
 
-  }.property('potential')
+    for(var m in utilityUsage){
+      if(m in aerosolSavings && !isNaN(aerosolSavings.m)){
+        aerosolValue=Number(aerosolSavings.m);
+      }
+      //resultMonths
+      if(utilityUsage[m] != null){
+
+        console.log(solarProduction[m]);
+
+        resultMonths[m] = Number(utilityUsage[m]) - poolPumpSaving - aerosolValue - solarProduction[m];
+      } else {
+        resultMonths[m] = 0;
+      }
+    }
+
+    return resultMonths;
+
+  }.property('aerosolMonthsSaving', 'poolPumpSaving', 'utilityUsage'),
+
+  usageAfterEnergyAndSolarTotal: function(){
+    var months = this.get('usageAfterEnergyAndSolar');
+
+    var total = 0;
+    for(var m in months){
+      if(months[m] != null && !isNaN(months[m])){
+        total+=months[m];
+      }
+    }
+
+    return total;
+
+  }.property('usageAfterEnergyAndSolar'),
+
+  solarProduction: function(){
+    return {
+      jan: 1178,
+      feb: 1168,
+      mar: 1555,
+      apr: 1652,
+      jun: 1684,
+      jul: 1618,
+      aug: 1485,
+      sep: 1528,
+      oct: 1470,
+      nov: 1404,
+      dec: 1092
+    }
+  }.property()
 });

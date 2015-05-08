@@ -1,27 +1,46 @@
 {{#link-to 'proposal.loading' type="button" class="btn btn-primary"}}Generate PDF{{/link-to}}
 
-<button href="#" data-toggle="modal" data-target=".bs-example-modal-lg" type="button" class="btn btn-danger">View Presentation</button>
+<button href="#" data-toggle="modal" data-target=".bs-example-modal-lg" type="button" class="btn btn-danger">View
+    Presentation
+</button>
 
-<div id="presentation-modal" class="modal fade bs-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div id="presentation-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title" id="myLargeModalLabel">Proposal Presentation<a class="anchorjs-link" href="#myLargeModalLabel"><span class="anchorjs-icon"></span></a></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myLargeModalLabel">Proposal Presentation<a class="anchorjs-link"
+                                                                                       href="#myLargeModalLabel"><span
+                        class="anchorjs-icon"></span></a></h4>
             </div>
             <div class="modal-body">
                 <h1>Bar Chart</h1>
               {{
               charts/barchart-potential
               chart-id="barchart-potfffff"
-              firstCalendar=proposal.utilityUsage.usageCalendar
-              secondCalendar=proposal.utilityUsage.billCalendar
+              firstCalendar=proposal.potential.utilityUsage.usageCalendar
+              secondCalendar=proposal.potential.utilityUsage.billCalendar
               on-modal="#presentation-modal"
               }}
 
-              {{ charts/piechart-potential chart-id="piechart-potential" on-modal="#presentation-modal"}}
+              {{
+              charts/piechart-potential
+              chart-id="piechart-potential"
+              on-modal="#presentation-modal"
+              proposal=proposal
+              }}
 
-              {{ charts/barchart-consum chart-id="barchart-consum" on-modal="#presentation-modal"}}
+              {{
+              charts/barchart-potential
+              chart-id="barchart-potfffff"
+              firstCalendar=proposal.usageAfterEnergyAndSolar
+              secondCalendar=proposal.usageAfterEnergyAndSolar
+              on-modal="#presentation-modal"
+              }}
+
+
             </div>
         </div>
     </div>

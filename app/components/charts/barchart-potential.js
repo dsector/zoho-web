@@ -7,6 +7,9 @@ export default Ember.Component.extend({
     var firstCalendar = this.get('firstCalendar');
     var secondCalendar = this.get('secondCalendar');
 
+    console.log(firstCalendar);
+    console.log(secondCalendar);
+
     if (firstCalendar == null || secondCalendar == null) {
       return;
     }

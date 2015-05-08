@@ -9,12 +9,5 @@ export default Ember.Route.extend({
 
     controller.set('model', proposal);
 
-
-
-    console.log("mttt");
-    console.log(proposal.potential);
-
-
-    //console.log(proposal.potential);
   }
 });

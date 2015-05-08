@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 
   model: function(){
     return this.store.fetchAll('proposal');
-  }
+  },
 
   /*
   actions: {
@@ -25,12 +25,15 @@ export default Ember.Route.extend({
   }
   */
 
-  /*
-  activate: function(){
-    this.store.unloadAll('potential');
-    this.store.unloadAll('proposal/project-design');
-    this.store.unloadAll('proposal');
-    this.store.unloadAll('energy-efficiency');
+  actions: {
+
+    willTransition: function (transition) {
+      /*
+      this.store.unloadAll('potential');
+      this.store.unloadAll('proposal/project-design');
+      this.store.unloadAll('proposal');
+      this.store.unloadAll('energy-efficiency');
+      */
+    }
   }
-  */
 });

@@ -9,5 +9,9 @@ export default Ember.Route.extend({
   setupController: function(controller, proposal){
     controller.set('proposal', proposal);
     controller.set('model', proposal.get('potential'));
+
+    controller.set('usageCalendar', this.store.createRecord('potential/calendar'));
+
+    controller.set('billCalendar', this.store.createRecord('potential/calendar'));
   }
 });

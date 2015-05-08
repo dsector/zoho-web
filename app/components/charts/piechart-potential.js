@@ -53,21 +53,36 @@ export default Ember.Component.extend({
 
     }
 
+    var proposal = this.get('proposal');
+
+    /*
+    console.log('this is it');
+    console.log(proposal);
+
+    console.log('poolPumpSaving');
+    console.log(proposal.get('poolPumpSaving'));
+
+    console.log('aerosol');
+    console.log(proposal.get('aerosolSavingTotal'));
+
+    console.log('usageAfter');
+    console.log(proposal.get('usageAfterEnergyAndSolarTotal'));
+    */
     var data = [
       {
-        value: 300,
+        value: proposal.get('poolPumpSaving'),
         color:"#F7464A",
         highlight: "#FF5A5E",
         label: "Red"
       },
       {
-        value: 50,
+        value: proposal.get('aerosolSavingTotal'),
         color: "#46BFBD",
         highlight: "#5AD3D1",
         label: "Green"
       },
       {
-        value: 100,
+        value: proposal.get('usageAfterEnergyAndSolarTotal'),
         color: "#FDB45C",
         highlight: "#FFC870",
         label: "Yellow"

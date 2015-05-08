@@ -5,7 +5,6 @@
 </div>
 
 <div class="step-container">
-    {{proposal.aerosolSavingTotal}}
   {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" collapsed="true"}}
     {{ proposal/energy-efficiency update="saveProposalToApi" proposal=proposal energy=energy }}
   {{/widget-collspandable}}
@@ -19,7 +18,7 @@
 
 <div class="step-container">
   {{#widget-collspandable title="Presentation" widget-id="action-buttons-widget"}}
-    {{proposal/action-buttons update="saveProposalToApi" proposal=model}}
+    {{proposal/action-buttons update="saveProposalToApi" proposal=proposal}}
   {{/widget-collspandable}}
 </div>
 {{outlet}}

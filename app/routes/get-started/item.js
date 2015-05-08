@@ -30,7 +30,12 @@ export default Ember.Route.extend({
 
   actions: {
     willTransition: function(transition){
+      /*
       this.store.unloadAll('proposal');
+      this.store.unloadAll('potential');
+      this.store.unloadAll('potential/utility');
+      this.store.unloadAll('potential/calendar');
+      */
     }
   }
 });

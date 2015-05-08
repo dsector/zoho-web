@@ -16,7 +16,7 @@ export default Ember.Route.extend({
 
     controller.set('utility', this.store.createRecord('potential/utility'));
 
-    controller.set('usageCalendar', this.store.createRecord('potential/calendar'))
+    controller.set('usageCalendar', this.store.createRecord('potential/calendar'));
 
     controller.set('billCalendar', this.store.createRecord('potential/calendar'));
   },
@@ -46,7 +46,6 @@ export default Ember.Route.extend({
      i.unloadRecord();
      });
 
-
     /*
      this.store.find('proposal', '').then(function (proposal) {
      console.log(proposal);
@@ -58,13 +57,14 @@ export default Ember.Route.extend({
 
   actions: {
     willTransition: function (transition) {
+      console.log("TRANSITION--------------------");
+      console.log(transition);
       /*
       this.store.unloadAll('proposal');
       this.store.unloadAll('potential');
       this.store.unloadAll('proposal/project-design');
       this.store.unloadAll('energy-efficiency');
       */
-      console.log("TTTEEE");
     }
   }
 
