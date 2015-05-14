@@ -30,6 +30,18 @@ export default Ember.Route.extend({
 
   actions: {
     willTransition: function(transition){
+      var transitionName = transition.targetName;
+      var currentRoute = this.controllerFor('application').get('currentRouteName');
+
+      var transitionSpaces = transitionName.split('.');
+      var currentSpaces = currentRoute.split('.');
+
+      if(transitionSpaces[0] != currentSpaces[0]){
+        this.store.unloadAll('proposal');
+        this.store.unloadAll('potential');
+        this.store.unloadAll('proposal/project-design');
+        this.store.unloadAll('energy-efficiency');
+      }
       /*
       this.store.unloadAll('proposal');
       this.store.unloadAll('potential');

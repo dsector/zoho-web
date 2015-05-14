@@ -43,3 +43,11 @@ table.dataTable thead .sorting:after {
 .hidden-inputs {
   display:none;
 }
+
+.navbar-top-bg {
+  background-color: #fff;
+}
+
+.breadcrumb-padding {
+  margin-top:20px;
+}

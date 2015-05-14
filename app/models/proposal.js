@@ -30,6 +30,9 @@ export default DS.Model.extend({
   aerosolMonthsSaving: function () {
     var potential = this.get('potential');
     var utilityUsage = potential.get('utilityUsage');
+    if(utilityUsage==null){
+      return;
+    }
     var usageCalendar = utilityUsage.usageCalendar;
     var resultCalendar = {};
 
@@ -82,6 +85,9 @@ export default DS.Model.extend({
     var poolPumpSaving = this.get('poolPumpSaving');
     var aerosolSavings = this.get('aerosolMonthsSaving');
     var utilityUsage = potential.get('utilityUsage');
+    if(utilityUsage==null){
+      return;
+    }
     utilityUsage = utilityUsage.usageCalendar;
     var solarProduction = this.get('solarProduction');
     var aerosolValue = 0;

@@ -39,4 +39,7 @@ app.import('bower_components/Chart.js/Chart.js');
 app.import('bower_components/Chart.js/src/Chart.Bar.js');
 app.import('bower_components/Chart.js/src/Chart.Radar.js');
 
+//Scrollspy
+app.import('vendor/scrollspy.js');
+
 module.exports = app.toTree();

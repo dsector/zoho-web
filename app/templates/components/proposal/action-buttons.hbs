@@ -16,7 +16,7 @@
                         class="anchorjs-icon"></span></a></h4>
             </div>
             <div class="modal-body">
-                <h1>Bar Chart</h1>
+                <h1>Current Electricity Use</h1>
               {{
               charts/barchart-potential
               chart-id="barchart-potfffff"
@@ -24,17 +24,17 @@
               secondCalendar=proposal.potential.utilityUsage.billCalendar
               on-modal="#presentation-modal"
               }}
-
+                <h1>Usage, Production & Saving Summary</h1>
               {{
               charts/piechart-potential
               chart-id="piechart-potential"
               on-modal="#presentation-modal"
               proposal=proposal
               }}
-
+              <h1>Efficiency Saving</h1>
               {{
-              charts/barchart-potential
-              chart-id="barchart-potfffff"
+              charts/barchart-consum
+              chart-id="barchart-dqwdqwd"
               firstCalendar=proposal.usageAfterEnergyAndSolar
               secondCalendar=proposal.usageAfterEnergyAndSolar
               on-modal="#presentation-modal"

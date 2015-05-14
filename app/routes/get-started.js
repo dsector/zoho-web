@@ -26,6 +26,7 @@ export default Ember.Route.extend({
   },
 
   deactivate: function () {
+
     /*
      this.store.unloadAll('proposal');
      this.store.unloadAll('potential');
@@ -34,6 +35,7 @@ export default Ember.Route.extend({
      */
     //this.store.unloadRecord(this.get('proposal'));
 
+    /*
      var proposals = this.store.all('proposal');
 
      proposals.forEach(function(i){
@@ -43,8 +45,9 @@ export default Ember.Route.extend({
      var potentials = this.store.all('potential');
 
      potentials.forEach(function(i){
-     i.unloadRecord();
+      i.unloadRecord();
      });
+     */
 
     /*
      this.store.find('proposal', '').then(function (proposal) {
@@ -56,9 +59,24 @@ export default Ember.Route.extend({
   },
 
   actions: {
+
     willTransition: function (transition) {
-      console.log("TRANSITION--------------------");
-      console.log(transition);
+
+
+      var transitionName = transition.targetName;
+      var currentRoute = this.controllerFor('application').get('currentRouteName');
+
+      var transitionSpaces = transitionName.split('.');
+      var currentSpaces = currentRoute.split('.');
+
+      if(transitionSpaces[0] != currentSpaces[0]){
+          this.store.unloadAll('proposal');
+          this.store.unloadAll('potential');
+          this.store.unloadAll('proposal/project-design');
+          this.store.unloadAll('energy-efficiency');
+      }
+
+
       /*
       this.store.unloadAll('proposal');
       this.store.unloadAll('potential');

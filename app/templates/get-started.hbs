@@ -1,11 +1,13 @@
-{{view "proposal/breadcrumb"}}
+<div class="" id="top-fix-container">
+    <div class="container">
+  {{view "proposal/breadcrumb"}}
+   </div>
+</div>
 
 <div class="col-md-3">
     <div class="sidebar-module sidebar-module-inset">
 
         {{ view "proposal/chart" }}
-
-
         {{!-- charts/barchart-potential chart-id="adqwdqwd" --}}
 
     </div>
@@ -14,7 +16,7 @@
 
     <section id="widget-grid">
 
-        <div class="step-container">
+        <div class="step-container" id="customer-lookup">
           {{ view "proposal/list" }}
         </div>
 

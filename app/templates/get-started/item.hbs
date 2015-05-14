@@ -1,22 +1,22 @@
-<div class="step-container">
+<div class="step-container" id="potential-wrapper">
   {{#widget-collspandable title="Potential" widget-id="potential-widget"}}
     {{ proposal/view-table update="savePotentialToApi" model=model }}
   {{/widget-collspandable}}
 </div>
 
-<div class="step-container">
+<div class="step-container" id="energy-wrapper">
   {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" collapsed="true"}}
     {{ proposal/energy-efficiency update="saveProposalToApi" proposal=proposal energy=energy }}
   {{/widget-collspandable}}
 </div>
 
-<div class="step-container">
+<div class="step-container" id="project-wrapper">
   {{#widget-collspandable title="Project Design" widget-id="project-design-widget" collapsed="true"}}
     {{proposal/project-design update="saveProposalToApi" project-design=project-design}}
   {{/widget-collspandable}}
 </div>
 
-<div class="step-container">
+<div class="step-container" id="presentation-wrapper">
   {{#widget-collspandable title="Presentation" widget-id="action-buttons-widget"}}
     {{proposal/action-buttons update="saveProposalToApi" proposal=proposal}}
   {{/widget-collspandable}}
