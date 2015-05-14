@@ -20,6 +20,9 @@ export default Ember.Component.extend({
   didInsertElement: function () {
 
     var energy = this.get('energy');
+    if(energy==null){
+      return;
+    }
 
     if(
       energy.hoursUsed != null &&
