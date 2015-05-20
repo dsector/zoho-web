@@ -10,10 +10,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
-                <h4 class="modal-title" id="myLargeModalLabel">Proposal Presentation<a class="anchorjs-link"
-                                                                                       href="#myLargeModalLabel"><span
-                        class="anchorjs-icon"></span></a></h4>
+                        aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myLargeModalLabel">Proposal Presentation
+                    <a class="anchorjs-link" href="#myLargeModalLabel">
+                        <span class="anchorjs-icon"></span>
+                    </a>
+                </h4>
             </div>
             <div class="modal-body">
                 <h1>Current Electricity Use</h1>
@@ -31,15 +34,41 @@
               on-modal="#presentation-modal"
               proposal=proposal
               }}
-              <h1>Efficiency Saving</h1>
+                <h1>Efficiency Saving</h1>
               {{
-              charts/barchart-consum
+              charts/barchart-potential
               chart-id="barchart-dqwdqwd"
               firstCalendar=proposal.usageAfterEnergyAndSolar
               secondCalendar=proposal.usageAfterEnergyAndSolar
               on-modal="#presentation-modal"
               }}
 
+                <h1>Why we are here</h1>
+
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td class="bold">Average Bill</td>
+                        <td>{{ proposal.potential.averageBill }}</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">High Bill</td>
+                        <td>{{ proposal.potential.utilityUsage.highElectricityBill }}</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Annual Bill</td>
+                        <td>{{ proposal.potential.utilityUsage.lowElectricityBill }}</td>
+                    </tr>
+                     <tr>
+                        <td class="bold">25 Year Bill</td>
+                        <td>{{ proposal.potential.twentyFiveTimesBill }}</td>
+                    </tr>
+                     <tr>
+                        <td>Possible Inflation</td>
+                        <td class="red-highlight">6-25% per year</td>
+                    </tr>
+                    </tbody>
+                </table>
 
             </div>
         </div>

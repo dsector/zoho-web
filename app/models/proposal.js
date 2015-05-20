@@ -104,8 +104,6 @@ export default DS.Model.extend({
       //resultMonths
       if(utilityUsage[m] != null){
 
-        console.log(solarProduction[m]);
-
         resultMonths[m] = Number(utilityUsage[m]) - poolPumpSaving - aerosolValue - solarProduction[m];
       } else {
         resultMonths[m] = 0;

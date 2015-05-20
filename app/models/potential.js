@@ -16,6 +16,10 @@ export default DS.Model.extend({
 
   proposalsLength: function(){
     return this.get('proposals.length');
-  }.property('proposals.length')
+  }.property('proposals.length'),
+
+  twentyFiveTimesBill: function(){
+    return Number(this.get('averageBill')) * 25;
+  }.property('averageBill')
 
 });

@@ -61,12 +61,10 @@ export default Ember.Controller.extend({
     var proposal = this.get('proposal');
     //proposal.set('potential', potential);
 
-    //console.log(proposal);
 
   }.observes('model'),
 
   proposalChanged: function () {
-    console.log("FFFFFFFFFFFFFFFFFF");
 
   }.observes('proposal')
 

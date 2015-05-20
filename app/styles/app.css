@@ -51,3 +51,13 @@ table.dataTable thead .sorting:after {
 .breadcrumb-padding {
   margin-top:20px;
 }
+
+.bold{
+  font-weight:bold;
+  color: #428bca;
+}
+
+.red-highlight {
+  color: red;
+  font-weight:bold;
+}
