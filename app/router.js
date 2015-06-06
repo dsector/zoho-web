@@ -6,6 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
+  "use strict";
+
   this.route('login');
 
   this.route('crm', function() {
@@ -26,5 +28,12 @@ export default Router.map(function() {
   });
   this.route('about');
   this.route('presentation');
-  this.route('setup');
+
+  this.route('setup', function() {
+    this.route('market-profile');
+    this.route('products-services');
+    this.route('pv-watts');
+    this.route('company-info');
+    this.route('contract');
+  });
 });
