@@ -1,1 +1,112 @@
 <h1>Market Profile</h1>
+<hr/>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Create a new market profile
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Market profile name</label>
+                          {{input type="text" value=model.name class="form-control"}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="col-md-3">Product</th>
+                            <th>Federal</th>
+                            <th>State</th>
+                            <th>Utility</th>
+                            <th>Tax</th>
+                            <th>Rebates</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each item in model.items}}
+                            <tr>
+                                <td>{{item.name}}</td>
+                                <td>{{item.federal}}%</td>
+                                <td>{{item.state}}</td>
+                                <td>{{item.utility}}</td>
+                                <td>{{item.tax}}</td>
+                                <td>{{item.rebates}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        <tr>
+                            <td>{{input type="text" class="form-control input-sm" value=item.name placeholder="Item name"}}</td>
+                            <td>{{input type="text" class="form-control input-sm" value=item.federal}}</td>
+                            <td>{{input type="text" class="form-control input-sm" value=item.state}}</td>
+                            <td>{{input type="text" class="form-control input-sm" value=item.utility}}</td>
+                            <td>{{input type="text" class="form-control input-sm" value=item.tax}}</td>
+                            <td>
+                              {{input type="text" class="form-control input-sm" value=item.rebates}}
+                            </td>
+                            <td>
+                                <button {{action 'addItem'}} class="btn btn-primary btn-sm">Add</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Saved market profiles
+            </div>
+            <div class="panel-body">
+              {{#each prof in controller.savedProfiles}}
+                  <h4>{{prof.name}} <span class="text-muted">{{prof.id}}</span></h4>
+
+                  <div class="row">
+                      <table class="table">
+                          <thead>
+                          <tr>
+                              <th class="col-md-3">Product</th>
+                              <th>Federal</th>
+                              <th>State</th>
+                              <th>Utility</th>
+                              <th>Tax</th>
+                              <th>Rebates</th>
+                              <th></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {{#each it in prof.items}}
+                              <tr>
+                                  <td>{{it.name}}</td>
+                                  <td>{{it.federal}}%</td>
+                                  <td>{{it.state}}</td>
+                                  <td>{{it.utility}}</td>
+                                  <td>{{it.tax}}</td>
+                                  <td>{{it.rebates}}</td>
+                                  <td>
+                                      <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                  </td>
+                              </tr>
+                          {{/each}}
+                          </tbody>
+                      </table>
+                  </div>
+                  <hr/>
+              {{/each}}
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,5 +1,10 @@
 import DS from 'ember-data';
 
-export default DS.RESTSerializer.extend({
-  primaryKey: "id"
+export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
+  primaryKey: "id",
+
+  attrs: {
+      items: {embedded: 'always'}
+  }
+
 });
