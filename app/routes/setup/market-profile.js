@@ -7,8 +7,10 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, model) {
+    var savedProfiles = this.store.findAll('market-profile/profile');
+
     controller.set('model', model);
-    controller.set('savedProfiles', this.store.findAll('market-profile/profile'));
+    controller.set('savedProfiles', savedProfiles);
     controller.set('item', this.store.createRecord('market-profile/item'));
-  },
+  }
 });

@@ -15,6 +15,10 @@
                           {{input type="text" value=model.name class="form-control"}}
                         </div>
                     </div>
+                    <div class="col-md-2 pull-right">
+                        <div class="form-group">
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <table class="table">
@@ -58,6 +62,10 @@
                         </tr>
                         </tbody>
                     </table>
+
+                    <div class="col-md-2">
+                        <button type="button" {{action 'saveProfile'}} class="btn btn-success">Save</button>
+                    </div>
                 </div>
             </div>
 
@@ -94,7 +102,7 @@
                                   <td>{{it.tax}}</td>
                                   <td>{{it.rebates}}</td>
                                   <td>
-                                      <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                      <button type="button" {{action 'deleteSavedItem' prof it}}class="btn btn-danger btn-sm">Delete</button>
                                   </td>
                               </tr>
                           {{/each}}
