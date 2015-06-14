@@ -70,15 +70,12 @@
             </div>
 
         </div>
-
+      {{#each prof in controller.savedProfiles}}
         <div class="panel panel-default">
             <div class="panel-heading">
-                Saved market profiles
+              {{prof.name}}
             </div>
             <div class="panel-body">
-              {{#each prof in controller.savedProfiles}}
-                  <h4>{{prof.name}} <span class="text-muted">{{prof.id}}</span></h4>
-
                   <div class="row">
                       <table class="table">
                           <thead>
@@ -106,15 +103,27 @@
                                   </td>
                               </tr>
                           {{/each}}
+                          <tr>
+                              <td>{{input type="text" class="form-control input-sm" value=item.name placeholder="Item name"}}</td>
+                              <td>{{input type="text" class="form-control input-sm" value=item.federal}}</td>
+                              <td>{{input type="text" class="form-control input-sm" value=item.state}}</td>
+                              <td>{{input type="text" class="form-control input-sm" value=item.utility}}</td>
+                              <td>{{input type="text" class="form-control input-sm" value=item.tax}}</td>
+                              <td>
+                                {{input type="text" class="form-control input-sm" value=item.rebates}}
+                              </td>
+                              <td>
+                                  <button {{action 'addSavedItem'}} class="btn btn-primary btn-sm">Add</button>
+                              </td>
+                          </tr>
                           </tbody>
                       </table>
                   </div>
-                  <hr/>
-              {{/each}}
-
+                  <button class="btn btn-success" {{action 'updateSavedProfile' prof}}>Update</button>
+                  <button class="btn btn-danger" {{action 'deleteSavedProfile' prof}}>Delete profile</button>
             </div>
         </div>
-
+      {{/each}}
 
     </div>
 </div>

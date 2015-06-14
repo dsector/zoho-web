@@ -4,30 +4,31 @@ export default Ember.Controller.extend({
 
   actions: {
 
-    /**
-     *
-     *
-     */
-    addItem: function()
-    {
+    addItem: function() {
       this.get('model').get('items').addObject(this.get('item'));
       this.set('item', this.store.createRecord('market-profile/item'));
     },
 
-    saveProfile: function()
-    {
+    saveProfile: function() {
       this.get('model').save().then(function() {
         this.set('model', this.generateNewModel());
       }.bind(this));
     },
 
-    deleteSavedItem: function(profle, item)
-    {
+    deleteSavedItem: function(profle, item) {
       this.store.deleteRecord(item);
+    },
 
-      profle.save().then(function() {
+    deleteSavedProfile: function(profile) {
+      profile.destroyRecord();
+    },
 
-      });
+    editSavedProfile: function(profile) {
+      this.set('model', profile);
+    },
+
+    updateSavedProfile: function(profile) {
+      profile.save();
     }
   },
 
