@@ -24,7 +24,15 @@ export default Router.map(function() {
     });
   });
   this.route('get-started', function() {
-    this.route('item', {path: '/potential/:potential_id'});
+    this.route('index', {path: '/'});
+
+    this.route('item', {path: '/potential/:potential_id'}, function() {
+      this.route('index', {path: '/'});
+      this.route('market-profile');
+      this.route('utility-data');
+      this.route('address');
+      this.route('energy-efficiency');
+    });
   });
   this.route('about');
   this.route('presentation');

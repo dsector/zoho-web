@@ -17,8 +17,6 @@ export default Ember.Controller.extend({
      */
     saveProposalToApi: function (obj) {
 
-      //show load bar
-      NProgress.inc();
 
       //set the object received by the components and
       //attach this to current proposal
@@ -37,11 +35,11 @@ export default Ember.Controller.extend({
         self.set('proposal', model);
 
         NProgress.done();
-      }
+      };
 
       var saveFail = function () {
         //todo :)
-      }
+      };
 
       proposal.save().then(saveSuccess);
     },

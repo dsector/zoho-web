@@ -7,19 +7,17 @@
         </div>
     </div>
 
-    <section id="widget-grid">
-
-        <div class="step-container" id="customer-lookup">
-          {{ view "proposal/list" }}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  {{#wizard-slide nextRoute=nextRoute prevRoute=prevRoute potential=model}}
+                    {{yield}}
+                  {{/wizard-slide}}
+                </div>
+            </div>
         </div>
-
-        <div class="step-container">
-          {{outlet "proposal"}}
-        </div>
-
-      {{outlet "proposal-item"}}
-
-    </section>
+    </div>
 </div>
 
 
@@ -35,4 +33,3 @@
 
     </div>
 </div>
-

@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   controllerName: 'get-started',
-  renderTemplate: function(){
-    this.render({outlet: 'proposal-item'});
-  },
-
 
   setupController: function(controller, potential) {
     controller.set('model', potential);
@@ -43,11 +39,11 @@ export default Ember.Route.extend({
         this.store.unloadAll('energy-efficiency');
       }
       /*
-      this.store.unloadAll('proposal');
-      this.store.unloadAll('potential');
-      this.store.unloadAll('potential/utility');
-      this.store.unloadAll('potential/calendar');
-      */
+       this.store.unloadAll('proposal');
+       this.store.unloadAll('potential');
+       this.store.unloadAll('potential/utility');
+       this.store.unloadAll('potential/calendar');
+       */
     }
   }
 });
