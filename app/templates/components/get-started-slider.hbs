@@ -1,0 +1,42 @@
+<div role="tabpanel">
+    <div class="" id="top-fix-container">
+        <div class="row">
+            <div class="container">
+              {{view "proposal/breadcrumb"}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-1 wizard-slider-chevron">
+                      {{#if prevSlide}}
+                          <h1 {{action "setSlide" prevSlide}} class="pull-left glyphicon glyphicon-chevron-left"></h1>
+                      {{/if}}
+                    </div>
+                    <div class="col-md-10">{{yield}}</div>
+                    <div class="col-md-1 wizard-slider-chevron">
+                      {{#if nextSlide}}
+                          <h1 {{action "setSlide" nextSlide}} class="pull-right glyphicon glyphicon-chevron-right"></h1>
+                      {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+              {{ view "proposal/chart" }}
+              {{!-- charts/barchart-potential chart-id="adqwdqwd" --}}
+            </div>
+        </div>
+
+    </div>
+</div>

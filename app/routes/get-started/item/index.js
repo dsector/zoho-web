@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  controllerName: 'get-started',
 
   setupController: function(controller, potential) {
     controller.set('model', potential);
+    controller.set('marketProfiles', this.store.findAll('market-profile/profile'));
 
     controller.set('proposal', this.store.createRecord('proposal', {
       //utilityUsage: this.createRecord('')
