@@ -1,5 +1,19 @@
 import DS from 'ember-data';
 
+var billMonths = [
+  'billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
+  'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
+  'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
+  'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'
+];
+
+var utilityMonths = [
+  'usageCalendar.jan', 'usageCalendar.feb', 'usageCalendar.mar',
+  'usageCalendar.apr', 'usageCalendar.jun', 'usageCalendar.jul',
+  'usageCalendar.aug', 'usageCalendar.sep', 'usageCalendar.oct',
+  'usageCalendar.nov', 'usageCalendar.dec', 'usageCalendar.may'
+];
+
 export default DS.Model.extend({
 
   electricityUsage: DS.attr(),
@@ -8,6 +22,8 @@ export default DS.Model.extend({
   usageCalendar: DS.belongsTo('potential/calendar'),
   billCalendar: DS.belongsTo('potential/calendar'),
 
+
+
   /**
    * Get the lowest electricity bill
    */
@@ -15,21 +31,30 @@ export default DS.Model.extend({
     var attrs = this.get('billCalendar.constructor.attributes');
 
     return this._calcMin(attrs, this.get('billCalendar'));
-  }.property('billCalendar.constructor.attributes.@each'),
+  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
+    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
+    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
+    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
 
   /**
    * Get the highest electricity bill
    */
   highElectricityBill: function() {
     return this._calcMax(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
-  }.property('billCalendar'),
+  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
+    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
+    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
+    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
 
   /**
    * Get the average electricity bill
    */
   avgElectricityBill: function() {
-    return this._calcAvg(this.get('billCalendar.constructor.attributes'));
-  }.property('billCalendar.constructor.attributes.@each'),
+    return this._calcAvg(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
+  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
+    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
+    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
+    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
 
   /**
    * Calculate the avg of the map
@@ -38,15 +63,18 @@ export default DS.Model.extend({
    * @returns {number}
    * @private
    */
-  _calcAvg: function(map) {
-    var sum = 0,
-      length = map.length;
+  _calcAvg: function(map, model) {
+    var sum = 0, i;
 
     map.forEach(function(name, item) {
-      sum += item;
+      i = model.get(item);
+
+      if (!isNaN(i)) {
+        sum += i;
+      }
     });
 
-    return sum / length;
+    return (sum / map.size).toFixed(2);
   },
 
   /**
@@ -57,13 +85,14 @@ export default DS.Model.extend({
    * @private
    */
   _calcMax: function(map, model) {
-    var max = 0;
+    var max = 0, i;
 
     map.forEach(function(name, item) {
-      if (model.get(item) > max) {
-        max = model.get(item);
+      i = parseFloat(model.get(item));
+      if (i > max) {
+        max = i;
       }
-    }.bind(this));
+    });
 
     return max;
   },
@@ -76,11 +105,12 @@ export default DS.Model.extend({
    * @private
    */
   _calcMin: function(map, model) {
-    var min = model.get('jan');
+    var min = model.get('jan'), i;
 
     map.forEach(function(name, item) {
-      if (model.get(item) < min) {
-        min = model.get(item);
+      i = parseFloat(model.get(item));
+      if (i < min) {
+        min = i;
       }
     });
 

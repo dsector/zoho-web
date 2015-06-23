@@ -1,19 +1,25 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <label for="low-electric-bill">Low Electric Bill</label>
-          {{input id="low-electric-bill" class="ember-view ember-text-field form-control input-sm" placeholder="Low Electric Bill"
+          {{input id="low-electric-bill" class="ember-view ember-text-field form-control input-sm" placeholder="Low Electric Bill" disabled="disabled"
           name="system-size-input" type="text" value=potential.utilityUsage.lowElectricityBill}}
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <label for="high-electric-bill">High Electric Bill</label>
-          {{input id="high-electric-bill" class="ember-view ember-text-field form-control input-sm"
+          {{input id="high-electric-bill" class="ember-view ember-text-field form-control input-sm" disabled="disabled"
           placeholder="High Electric Bill" name="system-production-input" type="text" value=potential.utilityUsage.highElectricityBill}}
         </div>
     </div>
-
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="high-electric-bill">Average Electric Bill</label>
+          {{input id="avg-electric-bill" class="ember-view ember-text-field form-control input-sm" disabled="disabled"
+          placeholder="High Electric Bill" name="system-production-input" type="text" value=potential.utilityUsage.avgElectricityBill}}
+        </div>
+    </div>
     <hr />
 
     <div class="col-md-6">
