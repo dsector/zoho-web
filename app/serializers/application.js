@@ -4,7 +4,7 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
   primaryKey: "id",
 
   attrs: {
-      items: {embedded: 'always'}
+      items: {embedded: 'always'},
+      utilityUsage: {embedded: 'always'}
   }
-
 });

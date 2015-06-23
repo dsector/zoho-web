@@ -9,8 +9,7 @@ export default DS.Model.extend({
   averageBill: DS.attr(),
   anualUsage: DS.attr(),
 
-  //ooo
-  utilityUsage: DS.attr(),
+  utilityUsage: DS.belongsTo('potential/utility'),
 
   proposals: DS.hasMany('proposal'),
 
