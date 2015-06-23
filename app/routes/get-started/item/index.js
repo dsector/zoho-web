@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   setupController: function(controller, potential) {
+    this.loadGoogleMap();
     controller.set('model', potential);
     controller.set('marketProfiles', this.store.findAll('market-profile/profile'));
 
@@ -10,6 +11,7 @@ export default Ember.Route.extend({
       //utilityUsage: this.createRecord('')
       potential: potential
     }));
+
 
     var utility = potential.get('utilityUsage');
 

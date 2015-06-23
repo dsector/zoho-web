@@ -25,7 +25,6 @@ export default Ember.Controller.extend({
     return this.getSlideByName(this.get('currentSlideName'));
   }.property('currentSlideName'),
 
-
   actions: {
 
     setSlide: function(slideName) {
