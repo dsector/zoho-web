@@ -64,17 +64,22 @@ export default DS.Model.extend({
    * @private
    */
   _calcAvg: function(map, model) {
-    var sum = 0, i;
+    var sum = 0, i, c = 0;
 
     map.forEach(function(name, item) {
       i = model.get(item);
 
       if (!isNaN(i)) {
-        sum += i;
+        sum += parseFloat(i);
+        c++;
       }
     });
 
-    return (sum / map.size).toFixed(2);
+    if (c == 0) {
+      return 0;
+    }
+
+    return (sum / c).toFixed(2);
   },
 
   /**
