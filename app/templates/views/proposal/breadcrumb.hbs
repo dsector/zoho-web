@@ -1,23 +1,26 @@
 <ul class="nav nav-pills nav-wizard" id="fixed-breadcrumb" role="tablist">
-    <li class="active"><a href="#" data-toggle="tab" data-where="#customer-lookup">Customer Lookup</a>
+    <li class="{{if (eq slideName "lookup") "active"}}">
+        <a {{action "setSlide" "lookup"}} data-toggle="tab" data-where="#customer-lookup">Customer Lookup</a>
 
         <div class="nav-arrow"></div>
     </li>
-    <li>
+    <li class="{{if (eq slideName "utility-data") "active"}}">
         <div class="nav-wedge"></div>
-        <a href="#" >Energy Efficiency</a>
+        <a  {{action "setSlide" "utility-data"}} >Utility Data</a>
 
         <div class="nav-arrow"></div>
     </li>
-    <li>
+
+    <li class="{{if (eq slideName "address") "active"}}">
         <div class="nav-wedge"></div>
-        <a href="#" data-toggle="tab" data-where="#project-wrapper">Project Design</a>
+        <a {{action "setSlide" "address"}} data-toggle="tab" data-where="#proposal-wrapper">Address</a>
 
         <div class="nav-arrow"></div>
     </li>
-    <li>
+
+    <li class="{{if (eq slideName "energy-efficiency") "active"}}">
         <div class="nav-wedge"></div>
-        <a href="#" data-toggle="tab" data-where="#proposal-wrapper">Proposal Review</a>
+        <a {{action "setSlide" "energy-efficiency"}} data-toggle="tab" data-where="#project-wrapper">Energy Efficiency</a>
 
         <div class="nav-arrow"></div>
     </li>

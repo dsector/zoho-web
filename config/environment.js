@@ -6,7 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     apiHost: '',
     baseURL: '/',
-    locationType: 'history',
+    locationType: 'hash',
     googleMap: {
       libraries: ['places']
     },
