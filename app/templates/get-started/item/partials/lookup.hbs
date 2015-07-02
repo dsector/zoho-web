@@ -71,27 +71,6 @@
   {{/widget-collspandable}}
 </div>
 
-<div class="step-container" id="some3-wrapper">
-  {{#widget-collspandable title="Initial Economics" widget-id="system3-info-widget" collapsed="true"}}
-      <div>
-          <form id="some-form">
-              <div class="form-group">
-                  <label for="syste-size-input">System Type</label>
-                {{ input type="text" class="form-control" name="system-size-input" placeholder="DC to AC size ratio" }}
-              </div>
-              <div class="form-group">
-                  <label for="system-production-input">Average Cost of Electricity Purchased</label>
-                {{ input type="text" class="form-control" name="module-type" placeholder="Average Cost of Electricity Purchased" }}
-              </div>
-              <div class="form-group">
-                  <label for="price-per-watt">Initial Cost</label>
-                {{ input type="text" class="form-control" name="array-type" placeholder="Initial Cost" }}
-              </div>
-          </form>
-      </div>
-  {{/widget-collspandable}}
-</div>
-
 <div class="step-container" id="energy-wrapper">
   {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" collapsed="true"}}
     {{ proposal/energy-efficiency update="saveProposalToApi" proposal=proposal energy=energy }}
