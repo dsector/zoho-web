@@ -2,17 +2,46 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-  didInsertElement: function () {
+  width: 800,
+  height: 400,
+  firstCalendar: Ember.Object.create(),
+  secondCalendar: Ember.Object.create(),
 
+  getCalendarData: function(calendar) {
+    var months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'],
+      data = [];
+
+    months.forEach(function(month) {
+      data.push(calendar.get(month) || 0);
+    });
+
+    return data;
+  },
+
+  didInsertElement: function () {
+    this.computeChart();
+  },
+
+  onMonthChanged: function() {
+    this.computeChart();
+  }.observes('firstCalendar.changedMonths', 'secondCalendar.changedMonths'),
+
+
+  computeChart: function() {
     var firstCalendar = this.get('firstCalendar');
     var secondCalendar = this.get('secondCalendar');
 
-    console.log(firstCalendar);
-    console.log(secondCalendar);
+    console.log("first calendar", firstCalendar);
+    console.log("second calendar", secondCalendar);
 
-    if (firstCalendar == null || secondCalendar == null) {
+    if (!firstCalendar || !secondCalendar) {
       return;
     }
+
+    var firstCalendarData = this.getCalendarData(firstCalendar);
+    var secondCalendarData = this.getCalendarData(secondCalendar);
+
+    console.log("Calendar datas:", firstCalendarData, secondCalendarData);
 
     var chartId = this.get("chart-id");
     var ctx = document.getElementById(chartId).getContext("2d");
@@ -27,20 +56,7 @@ export default Ember.Component.extend({
           strokeColor: "rgba(220,220,220,0.8)",
           highlightFill: "rgba(220,220,220,0.75)",
           highlightStroke: "rgba(220,220,220,1)",
-          data: [
-            firstCalendar.jan,
-            firstCalendar.feb,
-            firstCalendar.mar,
-            firstCalendar.apr,
-            firstCalendar.may,
-            firstCalendar.jun,
-            firstCalendar.jul,
-            firstCalendar.aug,
-            firstCalendar.sep,
-            firstCalendar.oct,
-            firstCalendar.nov,
-            firstCalendar.dec
-          ]
+          data: firstCalendarData,
 
         },
         {
@@ -49,19 +65,7 @@ export default Ember.Component.extend({
           strokeColor: "rgba(151,187,205,0.8)",
           highlightFill: "rgba(151,187,205,0.75)",
           highlightStroke: "rgba(151,187,205,1)",
-          data: [
-            secondCalendar.jan,
-            secondCalendar.feb,
-            secondCalendar.mar,
-            secondCalendar.apr,
-            secondCalendar.jun,
-            secondCalendar.jul,
-            secondCalendar.aug,
-            secondCalendar.sep,
-            secondCalendar.oct,
-            secondCalendar.nov,
-            secondCalendar.dec
-          ]
+          data: secondCalendarData
         }
       ]
     };
@@ -69,16 +73,12 @@ export default Ember.Component.extend({
 
     if (this.get('on-modal') != null) {
       Ember.$(this.get('on-modal')).on('shown.bs.modal', function (event) {
-        console.log('ctttxxx');
         var myBarChart = new Chart(ctx).Bar(data);
       });
 
     } else {
       var myBarChart = new Chart(ctx).Bar(data);
     }
-
-
   }
-
 
 });

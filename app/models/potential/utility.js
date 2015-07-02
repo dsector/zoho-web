@@ -29,32 +29,22 @@ export default DS.Model.extend({
    */
   lowElectricityBill: function() {
     var attrs = this.get('billCalendar.constructor.attributes');
-
     return this._calcMin(attrs, this.get('billCalendar'));
-  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
-    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
-    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
-    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
+  }.property('billCalendar.changedMonths'),
 
   /**
    * Get the highest electricity bill
    */
   highElectricityBill: function() {
     return this._calcMax(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
-  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
-    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
-    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
-    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
+  }.property('billCalendar.changedMonths'),
 
   /**
    * Get the average electricity bill
    */
   avgElectricityBill: function() {
     return this._calcAvg(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
-  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
-    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
-    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
-    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
+  }.property('billCalendar.changedMonths'),
 
   /**
    * Calculate the avg of the map

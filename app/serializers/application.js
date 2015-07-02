@@ -6,6 +6,7 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
       items: {embedded: 'always'},
       utilityUsage: {embedded: 'always'},
-      product: {embedded: 'always'}
+      product: {embedded: 'always'},
+      marketProfile: {embedded: 'always'},
   }
 });

@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.View.extend({
 
+  layoutName: 'get-started/item/layout',
+
   GoogleMap: Ember.View.extend({
     templateName: 'get-started/item/partials/address-map',
 

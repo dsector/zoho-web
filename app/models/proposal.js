@@ -5,7 +5,7 @@ export default DS.Model.extend({
   potential: DS.belongsTo('potential', {async: true}),
   energy: DS.attr(),
   design: DS.attr(),
-
+  marketProfile: DS.belongsTo('market-profile/profile'),
 
   poolPumpSaving: function(){
     var energy = this.get('energy');

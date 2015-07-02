@@ -1,0 +1,46 @@
+{{yield}}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Pricing</th>
+                                <th>Savings</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each item in proposal.marketProfile.items}}
+                              <tr>
+                                  <td>{{item.product.name}}</td>
+                                  <td>${{item.product.price}} {{item.product.productPricingName}}</td>
+                                  <td>{{item.product.savingsCalculationName}}</td>
+                              </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-4">
+                        {{proposal/pie-chart proposal=proposal}}
+                    </div>
+                    <div class="col-md-4">
+                      {{
+                      charts/barchart-potential
+                      chart-id="barchart-bottom"
+                        style="width: 100%; height: 100%"
+                      firstCalendar=proposal.potential.utilityUsage.usageCalendar
+                      secondCalendar=proposal.potential.utilityUsage.billCalendar
+                      }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
