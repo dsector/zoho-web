@@ -9,9 +9,9 @@ export default Ember.Route.extend({
 
     controller.set('proposal', this.store.createRecord('proposal', {
       //utilityUsage: this.createRecord('')
-      potential: potential
+      potential: potential,
+      pvwatts: this.store.createRecord('proposal/pvwatts')
     }));
-
 
     var utility = potential.get('utilityUsage');
 

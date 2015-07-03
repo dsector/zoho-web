@@ -22,6 +22,7 @@
                 <h1>Current Electricity Use</h1>
               {{
               charts/barchart-potential
+              style="width: 800px; height: 400px;"
               chart-id="barchart-potfffff"
               firstCalendar=proposal.potential.utilityUsage.usageCalendar
               secondCalendar=proposal.potential.utilityUsage.billCalendar
@@ -59,101 +60,20 @@
                         <td class="bold">Annual Bill</td>
                         <td>{{ proposal.potential.utilityUsage.lowElectricityBill }}</td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td class="bold">25 Year Bill</td>
                         <td>{{ proposal.potential.twentyFiveTimesBill }}</td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td>Possible Inflation</td>
                         <td class="red-highlight">6-25% per year</td>
                     </tr>
                     </tbody>
                 </table>
-                <hr />
-                <h1>Results <span class="pull-right">7,001 <span class="text-muted">kWh per Year *</span></span></h1>
-                <table class="table table-striped">
-                    <thead>
-                      <tr>
-                          <th>Month</th>
-                          <th>Solar Radiation <br />
-                              (kWh / m<sup>2</sup> / day)
-                          </th>
-                          <th>
-                              AC Energy <br />
-                              (kWh)
-                          </th>
+                <hr/>
 
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>January</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>February</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>March</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>April</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>May</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>June</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>July</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>August</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>September</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>October</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>November</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                     <tr>
-                        <td>December</td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
-                    <tr class="success">
-                        <td><strong>Annual</strong></td>
-                        <td>5.05</td>
-                        <td>7,001</td>
-                    </tr>
+              {{pvwatts-result pvwatts=proposal.pvwatts}}
 
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>

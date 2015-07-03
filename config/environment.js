@@ -16,7 +16,10 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
+    PVWatts: {
+      apiKey: "GrbAaHGCAcgnWkMJi1lN79cZGEbGgExfnm0w1kiR",
+      host: "https://developer.nrel.gov/api/pvwatts/v5.json"
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created

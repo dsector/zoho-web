@@ -16,24 +16,29 @@
                             </thead>
                             <tbody>
                             {{#each item in proposal.marketProfile.items}}
-                              <tr>
-                                  <td>{{item.product.name}}</td>
-                                  <td>${{item.product.price}} {{item.product.productPricingName}}</td>
-                                  <td>{{item.product.savingsCalculationName}}</td>
-                              </tr>
+                                <tr>
+                                    <td>{{item.product.name}}</td>
+                                    <td>${{item.product.price}} {{item.product.productPricingName}}</td>
+                                    <td>{{item.product.savingsCalculationName}}</td>
+                                </tr>
                             {{/each}}
                             </tbody>
                         </table>
+                        <br class="clearfix"/>
+
+                        <div class="step-container" id="presentation-wrapper">
+                            {{proposal/action-buttons update="saveProposalToApi" proposal=proposal}}
+                        </div>
                     </div>
 
                     <div class="col-md-4">
-                        {{proposal/pie-chart proposal=proposal}}
+                      {{proposal/pie-chart proposal=proposal}}
                     </div>
                     <div class="col-md-4">
                       {{
                       charts/barchart-potential
                       chart-id="barchart-bottom"
-                        style="width: 100%; height: 100%"
+                      style="width: 100%; height: 100%"
                       firstCalendar=proposal.potential.utilityUsage.usageCalendar
                       secondCalendar=proposal.potential.utilityUsage.billCalendar
                       }}

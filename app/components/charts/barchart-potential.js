@@ -31,17 +31,12 @@ export default Ember.Component.extend({
     var firstCalendar = this.get('firstCalendar');
     var secondCalendar = this.get('secondCalendar');
 
-    console.log("first calendar", firstCalendar);
-    console.log("second calendar", secondCalendar);
-
     if (!firstCalendar || !secondCalendar) {
       return;
     }
 
     var firstCalendarData = this.getCalendarData(firstCalendar);
     var secondCalendarData = this.getCalendarData(secondCalendar);
-
-    console.log("Calendar datas:", firstCalendarData, secondCalendarData);
 
     var chartId = this.get("chart-id");
     var ctx = document.getElementById(chartId).getContext("2d");

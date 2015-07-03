@@ -6,6 +6,7 @@ export default DS.Model.extend({
   energy: DS.attr(),
   design: DS.attr(),
   marketProfile: DS.belongsTo('market-profile/profile'),
+  pvwatts: DS.belongsTo('proposal/pvwatts'),
 
   poolPumpSaving: function(){
     var energy = this.get('energy');
