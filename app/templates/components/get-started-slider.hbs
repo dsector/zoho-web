@@ -16,7 +16,7 @@
                           <h1 {{action "setSlide" prevSlide}} class="slider-arrow pull-left glyphicon glyphicon-chevron-left"></h1>
                       {{/if}}
                     </div>
-                    <div class="col-md-10"  style="height: 550px; overflow: scroll">{{yield}}</div>
+                    <div class="col-md-10">{{yield}}</div>
                     <div class="col-md-1 wizard-slider-chevron">
                       {{#if nextSlide}}
                           <h1 {{action "setSlide" nextSlide}} class="slider-arrow pull-right glyphicon glyphicon-chevron-right"></h1>
