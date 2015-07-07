@@ -1,7 +1,9 @@
 @import (inline) "arrow.nav.css";
 @import (inline) "smart-admin.css";
 
-i a {
+@color-dark-blue: #2F577F;
+
+a {
   cursor: pointer;
 }
 
@@ -110,4 +112,27 @@ table.dataTable thead .sorting:after {
     }
   }
 
+}
+
+.nav-wizard {
+  li > a {
+    cursor: pointer;
+  }
+}
+
+.nav-pills, .nav-pills.nav-wizard {
+  li.active > a,
+  li.active > a:hover
+  {
+    background-color: @color-dark-blue;
+  }
+
+  > li.active {
+    .nav-arrow {
+      border-color: transparent transparent transparent @color-dark-blue;
+    }
+    .nav-wedge {
+      border-color: @color-dark-blue @color-dark-blue @color-dark-blue transparent;
+    }
+  }
 }

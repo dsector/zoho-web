@@ -31,7 +31,12 @@
 
         <div class="nav-arrow"></div>
     </li>
+    <li class="{{if (eq slideName "financing") "active"}}">
+        <div class="nav-wedge"></div>
+        <a {{action "setSlide" "financing"}}>Financing</a>
 
+        <div class="nav-arrow"></div>
+    </li>
     <li class="{{if (eq slideName "solution-presentation") "active"}}">
         <div class="nav-wedge"></div>
         <a {{action "setSlide" "solution-presentation"}}>Solution Presentation</a>
