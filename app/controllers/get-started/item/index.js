@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   moduleTypes: values.module_type,
   arrayTypes: values.array_type,
 
-  selectedProfileId: null,
+  selectedMarketProfile: null,
   currentSlideName: "lookup",
 
   /**
@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
    * @param name
    * @returns {string}
    */
-  getSlideByName: function(name) {
+  getSlideByName: function (name) {
     return "get-started/item/partials/" + name;
   },
 
@@ -25,9 +25,30 @@ export default Ember.Controller.extend({
    * Generates full name of the current slide
    * @returns {string}
    */
-  currentSlide: function() {
+  currentSlide: function () {
     return this.getSlideByName(this.get('currentSlideName'));
   }.property('currentSlideName'),
+
+  /**
+   *
+   */
+  initProposalItems: function () {
+    var items = this.get('selectedMarketProfile.items');
+    var newItems = [];
+    this.set('proposal.items', []);
+
+    items.forEach(function (item) {
+      var newItem = this.store.createRecord('market-profile/item');
+        newItem.setProperties(item.getProperties('product', 'federal', 'state', 'utility', 'tax', 'rebates', 'selected'));
+        newItem.set('calculation', this.store.createRecord('product/calculation'));
+        newItem.set('percent', this.store.createRecord('product/percent'));
+        newItem.set('kwh', this.store.createRecord('product/kwh'));
+        newItems.push(newItem)
+    }.bind(this));
+
+    this.set('proposal.items', newItems);
+
+  }.observes('selectedMarketProfile.items.@each.selected', 'selectedMarketProfile'),
 
 
   /**
@@ -59,10 +80,10 @@ export default Ember.Controller.extend({
       return false;
     }
 
-    promise.then(function(data){
+    promise.then(function (data) {
       console.log('Response from PVWatts: ', data);
       var out = data['outputs'];
-      for(var k in out) {
+      for (var k in out) {
         pvwatts.set(k, out[k]);
       }
     });
@@ -76,7 +97,7 @@ export default Ember.Controller.extend({
 
   actions: {
 
-    setSlide: function(slideName) {
+    setSlide: function (slideName) {
       console.log('slideName');
       this.set('currentSlideName', slideName);
     }

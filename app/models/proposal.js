@@ -5,7 +5,7 @@ export default DS.Model.extend({
   potential: DS.belongsTo('potential', {async: true}),
   energy: DS.attr(),
   design: DS.attr(),
-  marketProfile: DS.belongsTo('market-profile/profile'),
+  items: DS.attr(),
   pvwatts: DS.belongsTo('proposal/pvwatts'),
 
   poolPumpSaving: function(){

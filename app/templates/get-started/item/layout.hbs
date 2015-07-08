@@ -15,12 +15,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {{#each item in proposal.marketProfile.items}}
+                            {{#each item in proposal.items}}
+                            {{#if item.selected}}
                                 <tr>
                                     <td>{{item.product.name}}</td>
                                     <td>${{item.product.price}} {{item.product.productPricingName}}</td>
                                     <td>{{item.product.savingsCalculationName}}</td>
                                 </tr>
+                            {{/if}}
                             {{/each}}
                             </tbody>
                         </table>
