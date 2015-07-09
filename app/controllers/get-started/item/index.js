@@ -104,12 +104,13 @@ export default Ember.Controller.extend({
   actions: {
 
     setSlide: function (slideName) {
-      console.log('slideName');
       this.set('currentSlideName', slideName);
     },
 
     saveProposal: function() {
-      this.get('proposal').save();
+      this.get('proposal').save().then(function(proposal) {
+        proposal.get('items').filterBy('id', null).invoke('deleteRecord');
+      }.bind(this));
     }
   }
 });

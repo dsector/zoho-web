@@ -53,8 +53,6 @@ export default Ember.Controller.extend({
         newItems = newProfile.get('items'),
         store = this.store;
 
-      console.log('new items:' , newItems);
-
       profile.setProperties(newProfile.getProperties('name'));
 
       newItems.forEach(function(item) {
