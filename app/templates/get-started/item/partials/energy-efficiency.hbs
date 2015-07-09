@@ -5,18 +5,7 @@
       Please select a <a {{action "setSlide" "lookup"}}>market profile</a>.
     {{/unless}}
 
-  {{#each item in proposal.items}}
-    <div class="form-group">
-        <label>
-            {{input type="checkbox" checked=item.selected}}
-            {{item.product.name}}
-        </label>
-    </div>
-    {{#if item.selected}}
-      <div class="col-md-4">
-        {{item-form item=item}}
-      </div>
-    {{/if}}
-    <div class="clearfix"></div>
-  {{/each}}
+    {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" }}
+      {{ proposal/energy-efficiency update="saveProposalToApi" proposal=proposal }}
+    {{/widget-collspandable}}
 {{/get-started-slider}}

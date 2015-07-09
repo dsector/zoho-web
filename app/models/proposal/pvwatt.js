@@ -68,6 +68,4 @@ export default DS.Model.extend({
   dc_monthly: DS.attr(),
   ac_annual: DS.attr(),
   solrad_annual: DS.attr()
-
-
 });

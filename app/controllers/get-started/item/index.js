@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {values, callPVWatts} from '../../../models/proposal/pvwatts';
+import {values, callPVWatts} from '../../../models/proposal/pvwatt';
 
 export default Ember.Controller.extend({
 
@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
 
   selectedMarketProfile: null,
   currentSlideName: "lookup",
+  proposal: undefined,
 
   /**
    * Get the full path to a slide
@@ -33,22 +34,27 @@ export default Ember.Controller.extend({
    *
    */
   initProposalItems: function () {
-    var items = this.get('selectedMarketProfile.items');
-    var newItems = [];
-    this.set('proposal.items', []);
+    var items = this.get('selectedMarketProfile.items'),
+      proposalItems = this.get('proposal.items');
+
+    console.log("proposal items:", proposalItems);
+
+    proposalItems.forEach(function(item) {
+      this.get('proposal.items').removeObject(item);
+    }.bind(this));
+
+    console.log("proposal items 2:", proposalItems);
 
     items.forEach(function (item) {
-      var newItem = this.store.createRecord('market-profile/item');
-        newItem.setProperties(item.getProperties('product', 'federal', 'state', 'utility', 'tax', 'rebates', 'selected'));
+      var newItem = this.store.createRecord('proposal/item');
+        newItem.set('marketItem', item);
         newItem.set('calculation', this.store.createRecord('product/calculation'));
         newItem.set('percent', this.store.createRecord('product/percent'));
         newItem.set('kwh', this.store.createRecord('product/kwh'));
-        newItems.push(newItem)
+        proposalItems.addObject(newItem)
     }.bind(this));
 
-    this.set('proposal.items', newItems);
-
-  }.observes('selectedMarketProfile.items.@each.selected', 'selectedMarketProfile'),
+  }.observes('selectedMarketProfile'),
 
 
   /**
@@ -100,6 +106,10 @@ export default Ember.Controller.extend({
     setSlide: function (slideName) {
       console.log('slideName');
       this.set('currentSlideName', slideName);
+    },
+
+    saveProposal: function() {
+      this.get('proposal').save();
     }
   }
 });

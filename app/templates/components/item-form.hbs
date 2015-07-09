@@ -1,9 +1,9 @@
-{{#if (eq item.product.savingsCalculationName savingsCalculation.KWH)}}
+{{#if (eq item.marketItem.product.savingsCalculationName savingsCalculation.KWH)}}
   <div class="form-group">
       <label>Kilowatt Hour</label>
       {{input class="form-control" value=item.kwh.kwhUsage}}
   </div>
-{{else if (eq item.product.savingsCalculationName savingsCalculation.CALCULATION)}}
+{{else if (eq item.marketItem.product.savingsCalculationName savingsCalculation.CALCULATION)}}
 
       <div class="form-group">
           <label>Existing Draw</label>
@@ -17,10 +17,10 @@
 
       <div class="form-group">
           <label>Daily Hours Usage</label>
-        {{input class="form-control" value=item.calculation.hoursUsageDaily}}
+        {{input class="form-control" value=item.calculation.hoursDaily}}
       </div>
 
-{{else if (eq item.product.savingsCalculationName savingsCalculation.PERCENTAGE_TOTAL)}}
+{{else if (eq item.marketItem.product.savingsCalculationName savingsCalculation.PERCENTAGE_TOTAL)}}
 
   <div class="form-group">
       <label>Percent of Heating or Cooling Usage</label>

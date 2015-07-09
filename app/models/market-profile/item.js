@@ -13,10 +13,4 @@ export default DS.Model.extend({
   utility: DS.attr(),
   tax: DS.attr(),
   rebates: DS.attr(),
-
-  selected: false,
-
-  logCacat: function() {
-    console.log('ma cacat');
-  }.observes('poolPump.existingDraw')
 });
