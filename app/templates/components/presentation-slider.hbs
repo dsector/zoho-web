@@ -1,0 +1,19 @@
+<div class="presentation-border"></div>
+<div class="row">
+    <div class="col-md-1 presentation-arrow">
+      {{#if hasPrevSlide}}
+          <a {{action 'setSlide' 'prev'}}><h1 class="glyphicon glyphicon-chevron-left"></h1></a>
+      {{/if}}
+    </div>
+
+    <div class="col-md-10 presentation-content">
+      {{partial currentSlide}}
+    </div>
+
+    <div class="col-md-1 presentation-arrow">
+      {{#if hasNextSlide}}
+          <a {{action 'setSlide' 'next'}}><h1 class="glyphicon glyphicon-chevron-right"></h1></a>
+      {{/if}}
+    </div>
+</div>
+<div class="presentation-border"></div>
