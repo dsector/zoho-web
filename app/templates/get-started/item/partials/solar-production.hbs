@@ -47,7 +47,7 @@
   </div>
 
   <div class="step-container" id="some2-wrapper">
-    {{#widget-collspandable title="Advanced Parameters" widget-id="system2-info-widget" collapsed="true"}}
+    {{#widget-collspandable title="Advanced Parameters" widget-id="system2-info-widget" collapsed=false}}
         <div>
             <form id="some-form">
                 <div class="form-group">
@@ -69,8 +69,8 @@
 
 
   <div class="step-container" id="project-wrapper">
-    {{#widget-collspandable title="Project Design" widget-id="project-design-widget" collapsed="true"}}
-      {{proposal/project-design update="saveProposalToApi" project-design=project-design}}
+    {{#widget-collspandable title="Project Design" widget-id="project-design-widget" collapsed=false}}
+      {{proposal/project-design update="saveProposalToApi" project-design=proposal.design}}
     {{/widget-collspandable}}
   </div>
 {{/get-started-slider}}
