@@ -1,1 +1,41 @@
 <h1>PV Watts</h1>
+
+{{#widget-collspandable title="Advanced Parameters" widget-id="system2-info-widget" collapsed=false}}
+    <div>
+        <form id="some-form">
+            <div class="form-group">
+                <label>DC to AC size ratio</label>
+              {{input value=settings.dc_ac_ratio.value class="form-control"}}
+            </div>
+            <div class="form-group">
+                <label>Inverter efficiency (%)</label>
+              {{input value=settings.inv_eff.value class="form-control"}}
+            </div>
+            <div class="form-group">
+                <label for="price-per-watt">Ground Coverage Ratio</label>
+              {{input value=settings.gcr.value class="form-control"}}
+            </div>
+        </form>
+    </div>
+{{/widget-collspandable}}
+
+{{#widget-collspandable title="Project Design" widget-id="system2-info-widget" collapsed=false}}
+<div>
+    <form id="project-design-form">
+        <div class="form-group">
+            <label for="syste-size-input">System size</label>
+          {{ input type="text" value=settings.system_size.value class="form-control" name="system-size-input" id="system-size-input" placeholder="System size" focus-out="updateData" }}
+        </div>
+        <div class="form-group">
+            <label for="system-production-input">System production</label>
+          {{ input type="text" value=settings.system_production.value class="form-control" name="system-production-input" id="system-production-input" placeholder="System production" focus-out="updateData" }}
+        </div>
+        <div class="form-group">
+            <label for="price-per-watt">Price per watt</label>
+          {{ input type="text" value=settings.ppw.value class="form-control" name="price-per-watt" id="price-per-watt" placeholder="Price per watt" focus-out="updateData" }}
+        </div>
+    </form>
+</div>
+{{/widget-collspandable}}
+
+<button class="btn btn-primary" {{action 'save'}}>Save</button>
