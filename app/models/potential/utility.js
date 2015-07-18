@@ -46,6 +46,24 @@ export default DS.Model.extend({
     return this._calcAvg(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
   }.property('billCalendar.changedMonths'),
 
+  sumElectricityBill: function() {
+    return this._calcSum(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
+  }.property('billCalendar.changedMonths'),
+
+  _calcSum: function(map, model) {
+    var sum = 0, i;
+
+    map.forEach(function(name, item) {
+      i = model.get(item);
+
+      if (!isNaN(i)) {
+        sum += parseFloat(i);
+      }
+    });
+
+    return sum;
+  },
+
   /**
    * Calculate the avg of the map
    *
