@@ -1,3 +1,59 @@
 {{#get-started-slider slideName="financing" action="setSlide" nextSlide="solution-presentation" prevSlide="solar-production"}}
-  <h1>Financing</h1>
+    <div class="well">
+        <div class="col-md-4 col-md-offset-2">
+            <strong>Watts</strong><br/>
+          {{proposal.pvwatts.system_capacity}}
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+            <strong>PPW</strong><br/>
+            ${{proposal.design.pricePerWatt}}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Financial summary
+        </div>
+        <table class="table">
+            <tbody>
+            <tr>
+                <td width="350">Solar</td>
+                <td>${{proposal.solarPrice}}</td>
+            </tr>
+            <tr>
+                <td>Pool Pump</td>
+                <td>${{proposal.poolPumpPrice}}</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>${{proposal.totalPrice}}</strong></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Installment calculation
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Rate per period (%)</label>
+                      {{input class="form-control" value=proposal.ratePerPeriod}}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Number of Periods (months)</label>
+                      {{input class="form-control" value=proposal.numberOfPeriods}}
+                    </div>
+                </div>
+            </div>
+
+            <h4>Montly rate: ${{proposal.monthlyRate}}</h4>
+        </div>
+    </div>
 {{/get-started-slider}}

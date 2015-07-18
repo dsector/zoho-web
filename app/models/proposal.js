@@ -7,6 +7,60 @@ export default DS.Model.extend({
   design: DS.attr(),
   items: DS.hasMany('proposal/item'),
   pvwatts: DS.belongsTo('proposal/pvwatt'),
+  ratePerPeriod: DS.attr(),
+  numberOfPeriods: DS.attr(),
+
+  solarPrice: function() {
+    var ppw = this.get('design.pricePerWatt'),
+      dcSize = this.get('pvwatts.system_capacity');
+
+    if (ppw && dcSize) {
+      return ppw * dcSize;
+    }
+
+    return 0;
+  }.property('design.pricePerWatt', 'pvwatts.system_capacity'),
+
+  poolPumpPrice: function() {
+    var poolPump = this.get('items')
+      .filterBy('selected', true)
+      .findBy('marketItem.product.savingsCalculation', 'CALCULATION');
+
+    if (poolPump && poolPump.get('marketItem.product.productPricing') == 'EACH') {
+      return parseFloat(poolPump.get('marketItem.product.price'));
+    }
+
+    return 0;
+  }.property('items.@each.selected'),
+
+  /**
+   * Calculate the total price of system
+   */
+  // TODO add aeroseal cost
+  totalPrice: function() {
+    return this.get('solarPrice') + this.get('poolPumpPrice');
+  }.property('solarPrice', 'poolPumpPrice'),
+
+
+  monthlyRate: function() {
+    var r = this.get('ratePerPeriod'),
+      n = this.get('numberOfPeriods'),
+      pv = this.get('totalPrice');
+
+    console.log('Calculating:', r, n, pv);
+
+    if (!pv  || !n || !r) {
+      return 0;
+    }
+
+    r = r / 100;
+
+    return (
+      (r/12 * pv) /
+      (1 - Math.pow(1 + r/12, 0 - n))
+    ).toFixed(2);
+
+  }.property('totalPrice', 'ratePerPeriod', 'numberOfPeriods'),
 
   poolPumpSaving: function(){
     var energy = this.get('energy');
