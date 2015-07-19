@@ -50,6 +50,10 @@ export default DS.Model.extend({
     return this._calcSum(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
   }.property('billCalendar.changedMonths'),
 
+  minimumUsage: function() {
+    return this._calcMin(this.get('usageCalendar.constructor.attributes'), this.get('usageCalendar'));
+  }.property('usageCalendar.changedMonths'),
+
   _calcSum: function(map, model) {
     var sum = 0, i;
 

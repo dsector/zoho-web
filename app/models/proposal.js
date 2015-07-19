@@ -5,10 +5,18 @@ export default DS.Model.extend({
   potential: DS.belongsTo('potential', {async: true}),
   energy: DS.attr(),
   design: DS.attr(),
-  items: DS.hasMany('proposal/item'),
+  items: DS.hasMany('proposal/item', {
+    inverse: 'proposal'
+  }),
   pvwatts: DS.belongsTo('proposal/pvwatt'),
   ratePerPeriod: DS.attr(),
   numberOfPeriods: DS.attr(),
+
+  calendar: function() {
+    return [
+      'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'sep', 'oct', 'nov', 'dec'
+    ];
+  }.property(),
 
   solarPrice: function() {
     var ppw = this.get('design.pricePerWatt'),
@@ -41,7 +49,6 @@ export default DS.Model.extend({
     return this.get('solarPrice') + this.get('poolPumpPrice');
   }.property('solarPrice', 'poolPumpPrice'),
 
-
   monthlyRate: function() {
     var r = this.get('ratePerPeriod'),
       n = this.get('numberOfPeriods'),
@@ -63,24 +70,21 @@ export default DS.Model.extend({
   }.property('totalPrice', 'ratePerPeriod', 'numberOfPeriods'),
 
   poolPumpSaving: function(){
-    var energy = this.get('energy');
+    var item = this.get('items').findBy('marketItem.product.savingsCalculation', 'CALCULATION'),
+      c = 0;
 
     if (
-      energy != null &&
-      energy.hoursUsed != null &&
-      energy.existingPoolPump != null &&
-      energy.newPoolPump != null
+      item != null &&
+      item.hoursUsed != null &&
+      item.existingDraw != null &&
+      item.newDraw != null
     ) {
-      var c = (energy.existingPoolPump-energy.newPoolPump);
-      c = c*energy.hoursUsed;
-      c = c*30;
-      c = c/1000;
-
-      return c;
+      c = (item.existingDraw - item.newDraw) * (item.hoursDaily * 30);
+      return c.toFixed(2);
     } else {
       return 0;
     }
-  }.property('energy'),
+  }.property('items.@each.selected'),
 
   aerosolMonthsSaving: function () {
     var potential = this.get('potential');

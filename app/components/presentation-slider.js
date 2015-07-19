@@ -6,22 +6,41 @@ export default Ember.Component.extend({
   slides: [
     'introduction',
     'electricity-usage',
+    'energy-reduction',
     'energy-production'
   ],
   footers: [
-    'electricity-usage'
+    'electricity-usage',
+    'energy-reduction'
   ],
+
+  coloredItemsArray: function () {
+    var colors = [
+        [64, 127, 170],
+        [64, 127, 200],
+        [64, 127, 235],
+        [64, 127, 250]
+      ],
+      items = this.get('proposal.items'),
+      i = 0;
+
+    items.forEach(function (item, index) {
+      item.set('rgbColor', colors[index]);
+    });
+
+    return items;
+  }.property('proposal.items'),
 
   currentSlideIndex: 0,
 
-  currentSlideName: function() {
+  currentSlideName: function () {
     var names = this.get('slides'),
       index = this.get('currentSlideIndex');
 
     return names[index];
   }.property('currentSlideIndex'),
 
-  currentSlide: function() {
+  currentSlide: function () {
     var name = this.get('currentSlideName'),
       nameSpace = this.get('nameSpace');
 
@@ -29,7 +48,7 @@ export default Ember.Component.extend({
 
   }.property('currentSlideName'),
 
-  currentSlideFooter: function() {
+  currentSlideFooter: function () {
     var name = this.get('currentSlideName'),
       footers = this.get('footers'),
       nameSpace = this.get('nameSpace');
@@ -41,21 +60,21 @@ export default Ember.Component.extend({
     return false;
   }.property('currentSlide'),
 
-  hasNextSlide: function() {
+  hasNextSlide: function () {
     var index = this.get('currentSlideIndex'),
       length = this.get('slides').length;
 
     return index < length - 1;
   }.property('currentSlideIndex'),
 
-  hasPrevSlide: function() {
+  hasPrevSlide: function () {
     var index = this.get('currentSlideIndex');
 
     return index > 0;
   }.property('currentSlideIndex'),
 
   actions: {
-    setSlide: function(direction) {
+    setSlide: function (direction) {
       var index = this.get('currentSlideIndex'),
         length = this.get('slides').length;
 
