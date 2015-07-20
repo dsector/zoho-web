@@ -34,17 +34,12 @@ export default Ember.Component.extend({
           {
             "label": "Visual Basic",
             "value": 78327,
-            "color": "#cc9fb1"
+            "color": "#e4e4e4"
           },
           {
             "label": "Scheme",
             "value": 67706,
-            "color": "#e65414"
-          },
-          {
-            "label": "Rust",
-            "value": 36344,
-            "color": "#8b6834"
+            "color": "#2F577F"
           },
           {
             "label": "FoxPro",
