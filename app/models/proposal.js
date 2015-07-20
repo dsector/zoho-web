@@ -18,6 +18,20 @@ export default DS.Model.extend({
     ];
   }.property(),
 
+  colorItems: function () {
+    var colors = [
+        [64, 127, 170],
+        [64, 127, 200],
+        [64, 127, 235],
+        [64, 127, 250]
+      ],
+      items = this.get('items'),
+      i = 0;
+    items.forEach(function (item, index) {
+      item.set('rgbColor', colors[index]);
+    });
+  }.observes('items'),
+
   solarPrice: function() {
     var ppw = this.get('design.pricePerWatt'),
       dcSize = this.get('pvwatts.system_capacity');

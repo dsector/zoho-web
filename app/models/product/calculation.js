@@ -22,7 +22,7 @@ export default DS.Model.extend({
       return 0;
     }
 
-     return ((existingDraw - newDraw) * (hoursDaily * 30)).toFixed(2);
+     return ((existingDraw - newDraw) * (hoursDaily * 30));
   },
 
   monthlyKwhSavings: function() {

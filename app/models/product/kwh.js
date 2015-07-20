@@ -6,7 +6,7 @@ export default DS.Model.extend({
 
   monthlyKwhSavings: function() {
     var calendar = this.get('item.proposal.calendar'),
-      months = Ember.Object.extend(),
+      months = Ember.Object.create(),
       usage = parseFloat(this.get('kwhUsage'));
 
     calendar.forEach(function(item) {

@@ -41,7 +41,7 @@ export default DS.Model.extend({
       monthUsage = usageCalendar.get(month);
 
       if(monthUsage){
-        resultCalendar[month] = (parseFloat(monthUsage) - minimumUsage) * percent;
+        resultCalendar[month] = ((parseFloat(monthUsage) - minimumUsage) * percent);
       } else {
         resultCalendar[month] = null;
       }

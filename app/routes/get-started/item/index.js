@@ -11,7 +11,6 @@ export default Ember.Route.extend({
       //utilityUsage: this.createRecord('')
       potential: potential,
       pvwatts: this.store.createRecord('proposal/pvwatt'),
-      marketProfile: this.store.createRecord('market-profile/profile'),
       design: this.store.createRecord('proposal/project-design')
     }));
 
