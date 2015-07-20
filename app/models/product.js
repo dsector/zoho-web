@@ -17,6 +17,7 @@ export default DS.Model.extend({
   savingsCalculation: DS.attr('string'),
   productPricing: DS.attr('string'),
   price: DS.attr(),
+  cost: DS.attr(),
 
   savingsCalculationName: function() {
     return savingsCalculation[this.get('savingsCalculation')];
