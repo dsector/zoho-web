@@ -13,6 +13,12 @@ export default Ember.Controller.extend({
   currentSlideName: "lookup",
   proposal: undefined,
 
+  pvWattsResult: Ember.Object.create({
+    errors: [],
+    success: false,
+    incomplete: false
+  }),
+
   /**
    * Get the full path to a slide
    * @param name
@@ -57,9 +63,13 @@ export default Ember.Controller.extend({
    */
   loadPVWatts: function () {
     var pvwatts = this.get('proposal.pvwatts'),
-      address = this.get('model.address');
+      address = this.get('model.address'),
+      self = this;
 
     if (!pvwatts) return false;
+
+    this.set('pvWattsResult.incomplete', false);
+    this.set('pvWattsResult.success', false);
 
     var promise = callPVWatts({
       system_capacity: pvwatts.get('system_capacity'),
@@ -75,15 +85,23 @@ export default Ember.Controller.extend({
     });
 
     if (promise === null) {
+      this.set('pvWattsResult.incomplete', true);
       return false;
     }
 
     promise.then(function (data) {
-      console.log('Response from PVWatts: ', data);
       var out = data['outputs'];
+      console.log('success', data);
       for (var k in out) {
         pvwatts.set(k, out[k]);
       }
+      self.set('pvWattsResult.errors', []);
+      self.set('pvWattsResult.success', true);
+      self.set('pvWattsResult.incomplete', false);
+    }, function(data) {
+      var errors = data.responseJSON.errors;
+      console.log("errors:" , data);
+      self.set('pvWattsResult.errors', errors);
     });
 
   }.observes('proposal.pvwatts.system_capacity',

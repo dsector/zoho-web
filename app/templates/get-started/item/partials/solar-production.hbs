@@ -2,6 +2,21 @@
 
 
   <div class="step-container" id="some-wrapper">
+      {{#each msg in pvWattsResult.errors}}
+        <div class="alert alert-danger">
+            {{msg}}
+        </div>
+      {{/each}}
+      {{#if pvWattsResult.incomplete}}
+        <div class="alert alert-warning">
+            You must complete all fields to process pvwatts.
+        </div>
+      {{/if}}
+      {{#if pvWattsResult.success}}
+        <div class="alert alert-success">
+            PVWatts successfully processed.
+        </div>
+      {{/if}}
     {{#widget-collspandable title="System Info" widget-id="system-info-widget" collapsed=false}}
         <div>
             <form id="some-form">
@@ -43,34 +58,6 @@
                 </div>
             </form>
         </div>
-    {{/widget-collspandable}}
-  </div>
-
-  <div class="step-container" id="some2-wrapper">
-    {{#widget-collspandable title="Advanced Parameters" widget-id="system2-info-widget" collapsed=false}}
-        <div>
-            <form id="some-form">
-                <div class="form-group">
-                    <label>DC to AC size ratio</label>
-                  {{input value=proposal.pvwatts.dc_ac_ratio class="form-control"}}
-                </div>
-                <div class="form-group">
-                    <label>Inverter efficiency (%)</label>
-                  {{input value=proposal.pvwatts.inv_eff class="form-control"}}
-                </div>
-                <div class="form-group">
-                    <label for="price-per-watt">Ground Coverage Ratio</label>
-                  {{input value=proposal.pvwatts.gcr class="form-control"}}
-                </div>
-            </form>
-        </div>
-    {{/widget-collspandable}}
-  </div>
-
-
-  <div class="step-container" id="project-wrapper">
-    {{#widget-collspandable title="Project Design" widget-id="project-design-widget" collapsed=false}}
-      {{proposal/project-design update="saveProposalToApi" project-design=proposal.design}}
     {{/widget-collspandable}}
   </div>
 {{/get-started-slider}}
