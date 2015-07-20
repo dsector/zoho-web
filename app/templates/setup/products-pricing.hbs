@@ -61,6 +61,7 @@
               <th>Product Pricing</th>
               <th>Price</th>
               <th>Cost</th>
+              <th></th>
           </tr>
         </thead>
         <tbody>
@@ -71,6 +72,7 @@
                 <td>{{product.productPricingName}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product.cost}}</td>
+                <td><a  {{action "deleteProduct" product}}>Delete</a></td>
             </tr>
           {{/each}}
         </tbody>

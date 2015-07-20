@@ -52,5 +52,10 @@ export default Ember.Controller.extend({
         this.set('newProduct', this.createNewProduct());
       }.bind(this));
 
+    },
+
+    deleteProduct: function(product) {
+      product.deleteRecord();
+      product.save();
     }
   }});
