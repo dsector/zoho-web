@@ -2,6 +2,7 @@
 @import (inline) "smart-admin.css";
 
 @color-dark-blue: #2F577F;
+@color-light-sliver: #e4e4e4;
 
 a {
   cursor: pointer;
@@ -138,10 +139,14 @@ table.dataTable thead .sorting:after {
 }
 
 .panel {
-  &.panel-default {
+  &.panel-default:not(.panel-no-bg) {
     .panel-heading {
       background-color: @color-dark-blue;
       color: #fff;
+    }
+    .panel-body,
+    table {
+      background-color: @color-light-sliver;
     }
   }
 }
@@ -155,6 +160,10 @@ table.dataTable thead .sorting:after {
     a {
       color: #fff;
     }
+  }
+
+  > div {
+    background-color: @color-light-sliver !important;
   }
 }
 
