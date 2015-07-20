@@ -19,7 +19,6 @@ export default Ember.Controller.extend({
 
       for(prop in this.settings.getProperties(properties)) {
         model = this.settings.get(prop);
-        console.log("Iterating: ", prop, model);
         model.save().then(function(saved) {
           if (!model.get('id')) {
             store.deleteRecord(model);
