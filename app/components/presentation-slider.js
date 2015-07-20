@@ -14,23 +14,6 @@ export default Ember.Component.extend({
     'energy-reduction'
   ],
 
-  coloredItemsArray: function () {
-    var colors = [
-        [64, 127, 170],
-        [64, 127, 200],
-        [64, 127, 235],
-        [64, 127, 250]
-      ],
-      items = this.get('proposal.items'),
-      i = 0;
-
-    items.forEach(function (item, index) {
-      item.set('rgbColor', colors[index]);
-    });
-
-    return items;
-  }.property('proposal.items'),
-
   currentSlideIndex: 0,
 
   currentSlideName: function () {
@@ -72,6 +55,7 @@ export default Ember.Component.extend({
 
     return index > 0;
   }.property('currentSlideIndex'),
+
 
   actions: {
     setSlide: function (direction) {

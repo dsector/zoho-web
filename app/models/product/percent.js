@@ -6,7 +6,7 @@ export default DS.Model.extend({
 
 
   avgMonthlyKwhSavings: function() {
-    return (this.get('annualKwhSavings') / 12).toFixed(2);
+    return (this.get('annualKwhSavings') / 12);
   }.property('annualKwhSavings'),
 
   annualKwhSavings: function() {
@@ -20,7 +20,7 @@ export default DS.Model.extend({
       }
     });
 
-    return sum.toFixed(2);
+    return sum;
   }.property('monthlyKwhSavings'),
 
   monthlyKwhSavings: function() {

@@ -32,6 +32,13 @@ export default DS.Model.extend({
     });
   }.observes('items'),
 
+  /**
+   * Return selected items for this proposal
+   */
+  selectedItems: function() {
+    return this.get('items').filterBy('selected', true);
+  }.property('items.@each.selected'),
+
   solarPrice: function() {
     var ppw = this.get('design.pricePerWatt'),
       dcSize = this.get('pvwatts.system_capacity');
