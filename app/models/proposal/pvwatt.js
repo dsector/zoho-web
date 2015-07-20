@@ -1,19 +1,20 @@
 import DS from 'ember-data';
 import config from '../../config/environment';
+import Ember from 'ember';
 
 export var values = {
-  module_type: [
+  module_type: Ember.A([
     {value: 0, name: "Standard"},
     {value: 1, name: "Premium"},
     {value: 2, name: "Thin film"}
-  ],
-  array_type: [
+  ]),
+  array_type: Ember.A([
     {value: 0, name: "Fixed - Open Rack"},
     {value: 1, name: "Fixed - Roof Mounted"},
     {value: 2, name: "1-Axis"},
     {value: 3, name: "1-Axis Backtracking"},
     {value: 4, name: "2-Axis"}
-  ]
+  ])
 };
 
 /**
@@ -67,5 +68,19 @@ export default DS.Model.extend({
   solrad_monthly: DS.attr(),
   dc_monthly: DS.attr(),
   ac_annual: DS.attr(),
-  solrad_annual: DS.attr()
+  solrad_annual: DS.attr(),
+
+  moduleTypeName: function() {
+    var moduleType = parseInt(this.get('module_type'));
+    var type = values.module_type.findBy('value', moduleType);
+
+    return type ? type.name : null;
+  }.property('module_type'),
+
+  arrayTypeName: function() {
+    var arrayType = parseInt(this.get('array_type'));
+    var type = values.array_type.findBy('value', arrayType);
+
+    return type ? type.name : null;
+  }.property('array_type')
 });

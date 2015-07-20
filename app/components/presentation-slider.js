@@ -11,7 +11,8 @@ export default Ember.Component.extend({
   ],
   footers: [
     'electricity-usage',
-    'energy-reduction'
+    'energy-reduction',
+    'energy-production'
   ],
 
   currentSlideIndex: 0,
