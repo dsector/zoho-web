@@ -2,10 +2,12 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   kwhUsage: DS.attr(),
-  item: DS.belongsTo('proposal/item'),
+  parentItem: DS.belongsTo('proposal/item', {
+    inverse: 'kwh'
+  }),
 
   monthlyKwhSavings: function() {
-    var calendar = this.get('item.proposal.calendar'),
+    var calendar = this.get('parentItem.proposal.calendar'),
       months = Ember.Object.create(),
       usage = parseFloat(this.get('kwhUsage'));
 

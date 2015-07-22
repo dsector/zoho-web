@@ -4,10 +4,12 @@ export default DS.Model.extend({
   existingDraw: DS.attr(),
   newDraw: DS.attr(),
   hoursDaily: DS.attr(),
-  item: DS.belongsTo('proposal/item'),
+  parentItem: DS.belongsTo('proposal/item', {
+    inverse: 'calculation'
+  }),
 
   _getCalendar: function() {
-    return this.get('item.proposal.calendar');
+    return this.get('parentItem.proposal.calendar');
   },
 
   calculateMonthlySavings: function() {

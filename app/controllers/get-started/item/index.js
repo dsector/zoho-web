@@ -118,6 +118,7 @@ export default Ember.Controller.extend({
     },
 
     saveProposal: function () {
+      console.log(this.get('proposal'));
       this.get('proposal').save().then(function (proposal) {
         proposal.get('items').filterBy('id', null).invoke('deleteRecord');
       }.bind(this));

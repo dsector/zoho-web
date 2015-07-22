@@ -2,11 +2,11 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   sample: DS.attr('string'),
-  potential: DS.belongsTo('potential', {async: true}),
+  potential: DS.belongsTo('potential'),
   energy: DS.attr(),
   design: DS.attr(),
   items: DS.hasMany('proposal/item', {
-    inverse: 'proposal'
+    inverse: 'parentProposal'
   }),
   pvwatts: DS.belongsTo('proposal/pvwatt'),
   ratePerPeriod: DS.attr(),

@@ -4,16 +4,18 @@ import {savingsCalculation} from '../product';
 
 export default DS.Model.extend({
   marketItem: DS.belongsTo('market-profile/item'),
-  proposal: DS.belongsTo('proposal'),
+  parentProposal: DS.belongsTo('proposal', {
+    inverse: 'items'
+  }),
 
   calculation: DS.belongsTo('product/calculation', {
-    inverse: 'item'
+    inverse: 'parentItem'
   }),
   kwh: DS.belongsTo('product/kwh', {
-    inverse: 'item'
+    inverse: 'parentItem'
   }),
   percent: DS.belongsTo('product/percent', {
-    inverse: 'item'
+    inverse: 'parentItem'
   }),
 
   selected: DS.attr(),
@@ -36,6 +38,9 @@ export default DS.Model.extend({
     }
   }.property(),
 
+  proposal: function() {
+    return this.get('parentProposal');
+  }.property('parentProposal'),
 
   rgbColor: [],
 

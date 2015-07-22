@@ -2,7 +2,9 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   percentUsage: DS.attr(),
-  item: DS.belongsTo('proposal/item'),
+  parentItem: DS.belongsTo('proposal/item', {
+    inverse: 'percent'
+  }),
 
 
   avgMonthlyKwhSavings: function() {
@@ -11,7 +13,7 @@ export default DS.Model.extend({
 
   annualKwhSavings: function() {
      var sum = 0,
-       calendar = this.get('item.proposal.calendar'),
+       calendar = this.get('parentItem.proposal.calendar'),
        savings = this.get('monthlyKwhSavings');
 
     calendar.forEach(function(month) {
@@ -24,10 +26,10 @@ export default DS.Model.extend({
   }.property('monthlyKwhSavings'),
 
   monthlyKwhSavings: function() {
-    var potential = this.get('item.proposal.potential');
+    var potential = this.get('parentItem.proposal.potential');
     console.log('Potential:', potential.get('potentialName'));
     var utilityUsage = potential.get('utilityUsage');
-    var calendar = this.get('item.proposal.calendar');
+    var calendar = this.get('parentItem.proposal.calendar');
     if(utilityUsage==null){
       return;
     }
@@ -50,5 +52,5 @@ export default DS.Model.extend({
     console.log('Percent monthly:', minimumUsage, resultCalendar, usageCalendar);
 
     return resultCalendar;
-  }.property('item.proposal.potential.utilityUsage.usageCalendar.changedMonths')
+  }.property('parentItem.proposal.potential.utilityUsage.usageCalendar.changedMonths')
 });
