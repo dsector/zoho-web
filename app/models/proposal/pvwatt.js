@@ -82,5 +82,11 @@ export default DS.Model.extend({
     var type = values.array_type.findBy('value', arrayType);
 
     return type ? type.name : null;
-  }.property('array_type')
+  }.property('array_type'),
+
+  systemCapacityKw: function() {
+    var w = this.get('system_capacity');
+
+    return w * 1000;
+  }.property('system_capacity')
 });

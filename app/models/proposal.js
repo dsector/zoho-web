@@ -41,14 +41,14 @@ export default DS.Model.extend({
 
   solarPrice: function() {
     var ppw = this.get('design.pricePerWatt'),
-      dcSize = this.get('pvwatts.system_capacity');
+      dcSize = this.get('pvwatts.systemCapacityKw');
 
     if (ppw && dcSize) {
       return ppw * dcSize;
     }
 
     return 0;
-  }.property('design.pricePerWatt', 'pvwatts.system_capacity'),
+  }.property('design.pricePerWatt', 'pvwatts.systemCapacityKw'),
 
   poolPumpPrice: function() {
     var poolPump = this.get('items')
