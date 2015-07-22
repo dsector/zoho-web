@@ -22,7 +22,17 @@
 <body>
 
 {{content-for 'body'}}
-
+<script>
+  window.paceOptions = {
+    ajax: {
+      trackMethods: ['GET', 'POST', 'PUT', 'DELETE', 'REMOVE']
+    },
+    document: true,
+    eventLag: {
+      minSamples: 10
+    }
+  };
+</script>
 <script src="assets/vendor.js"></script>
 <script src="assets/zoho-web.js"></script>
 

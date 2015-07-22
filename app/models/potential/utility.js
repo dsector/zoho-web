@@ -29,32 +29,44 @@ export default DS.Model.extend({
    */
   lowElectricityBill: function() {
     var attrs = this.get('billCalendar.constructor.attributes');
-
     return this._calcMin(attrs, this.get('billCalendar'));
-  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
-    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
-    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
-    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
+  }.property('billCalendar.changedMonths'),
 
   /**
    * Get the highest electricity bill
    */
   highElectricityBill: function() {
     return this._calcMax(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
-  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
-    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
-    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
-    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
+  }.property('billCalendar.changedMonths'),
 
   /**
    * Get the average electricity bill
    */
   avgElectricityBill: function() {
     return this._calcAvg(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
-  }.property('billCalendar.jan', 'billCalendar.feb', 'billCalendar.mar',
-    'billCalendar.apr', 'billCalendar.jun', 'billCalendar.jul',
-    'billCalendar.aug', 'billCalendar.sep', 'billCalendar.oct',
-    'billCalendar.nov', 'billCalendar.dec', 'billCalendar.may'),
+  }.property('billCalendar.changedMonths'),
+
+  sumElectricityBill: function() {
+    return this._calcSum(this.get('billCalendar.constructor.attributes'), this.get('billCalendar'));
+  }.property('billCalendar.changedMonths'),
+
+  minimumUsage: function() {
+    return this._calcMin(this.get('usageCalendar.constructor.attributes'), this.get('usageCalendar'));
+  }.property('usageCalendar.changedMonths'),
+
+  _calcSum: function(map, model) {
+    var sum = 0, i;
+
+    map.forEach(function(name, item) {
+      i = model.get(item);
+
+      if (!isNaN(i)) {
+        sum += parseFloat(i);
+      }
+    });
+
+    return sum;
+  },
 
   /**
    * Calculate the avg of the map
@@ -64,17 +76,22 @@ export default DS.Model.extend({
    * @private
    */
   _calcAvg: function(map, model) {
-    var sum = 0, i;
+    var sum = 0, i, c = 0;
 
     map.forEach(function(name, item) {
       i = model.get(item);
 
       if (!isNaN(i)) {
-        sum += i;
+        sum += parseFloat(i);
+        c++;
       }
     });
 
-    return (sum / map.size).toFixed(2);
+    if (c == 0) {
+      return 0;
+    }
+
+    return (sum / c).toFixed(2);
   },
 
   /**

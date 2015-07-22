@@ -1,0 +1,9 @@
+{{#get-started-slider action="setSlide" prevSlide="address" nextSlide="solar-production" slideName="energy-efficiency"}}
+    {{#unless proposal.items.length}}
+      Please select a <a {{action "setSlide" "lookup"}}>market profile</a>.
+    {{/unless}}
+
+    {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" }}
+      {{ proposal/energy-efficiency update="saveProposalToApi" proposal=proposal }}
+    {{/widget-collspandable}}
+{{/get-started-slider}}

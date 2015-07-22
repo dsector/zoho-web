@@ -1,0 +1,239 @@
+@import (inline) "arrow.nav.css";
+@import (inline) "smart-admin.css";
+
+@color-dark-blue: #2F577F;
+@color-light-sliver: #e4e4e4;
+
+a {
+  cursor: pointer;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.main-container {
+  min-height: 550px;
+}
+
+.zoho-container {
+  margin-top: 20px;
+}
+
+table.dataTable thead .sorting_asc:after {
+  content: none;
+}
+table.dataTable thead .sorting_desc:after {
+  content: none;
+}
+table.dataTable thead .sorting:after {
+  content: none;
+}
+
+.nav-wizard {
+  margin-bottom:20px;
+}
+
+.footer {
+  margin-top:20px;
+}
+
+.hidden-inputs {
+  display:none;
+}
+
+.navbar-top-bg {
+  background-color: #fff;
+}
+
+.breadcrumb-padding {
+  margin-top:20px;
+}
+
+.bold{
+  font-weight:bold;
+  color: #428bca;
+}
+
+.red-highlight {
+  color: red;
+  font-weight:bold;
+}
+
+.paginate_button {
+  padding: 0 !important;
+}
+
+.paginate_button:hover {
+  border: 0 !important;
+}
+
+.wizard-slider-chevron {
+  padding-top: 40px;
+}
+
+.google-map {
+  width: 100%;
+  height: 100%;
+}
+
+.google-map .map-canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 500px
+}
+
+.slider-arrow {
+  cursor: pointer;
+}
+
+.app-logo {
+  height: 55px;
+  margin-top: 2px;
+  margin-right: 10px;
+}
+
+.header-navbar {
+  border: 0;
+  border-radius: 0;
+  background-image: url('../images/header-bg.jpg');
+  min-height: 60px;
+}
+
+.header-navbar .navbar-nav > li{
+
+  & > a {
+    color: #ccc;
+    cursor: pointer;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+}
+
+.nav-wizard {
+  li > a {
+    cursor: pointer;
+  }
+}
+
+.nav-pills, .nav-pills.nav-wizard {
+  li.active > a,
+  li.active > a:hover
+  {
+    background-color: @color-dark-blue;
+  }
+
+  > li.active {
+    .nav-arrow {
+      border-color: transparent transparent transparent @color-dark-blue;
+    }
+    .nav-wedge {
+      border-color: @color-dark-blue @color-dark-blue @color-dark-blue transparent;
+    }
+  }
+}
+
+.panel {
+  &.panel-default:not(.panel-no-bg) {
+    .panel-heading {
+      background-color: @color-dark-blue;
+      color: #fff;
+    }
+    .panel-body,
+    table {
+      background-color: @color-light-sliver;
+    }
+  }
+}
+
+.jarviswidget {
+  header {
+    background-color: @color-dark-blue;
+    color: #fff;
+  }
+  .jarviswidget-ctrls {
+    a {
+      color: #fff;
+    }
+  }
+
+  > div {
+    background-color: @color-light-sliver !important;
+  }
+}
+
+
+
+#presentation-slider {
+  width: 100%;
+  height: 100%;
+
+}
+
+.presentation-border {
+  background-image: url('../images/header-bg.jpg');
+  width: 100%;
+  height: 60px;
+}
+
+.presentation-footer {
+  background-color: #EFEFEF;
+  border: 1px solid cornflowerblue;
+  width: 100%;
+  min-height: 50px;
+  padding-top: 10px;
+}
+
+.presentation-arrow h1 {
+  margin-top: 220px;
+}
+
+.presentation-content {
+  min-height: 500px;
+}
+
+.btn-primary {
+  background-color: @color-dark-blue;
+}
+
+
+.borderless {
+  td, th {
+    border: none !important;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.icon-white {
+  color: @color-light-sliver;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.fullscreen-button {
+  font-size: 25px;
+  margin: 18px;
+}
+
+.preview-bar-item {
+  float: left;
+  margin: 10px;
+
+  &.pie-chart {
+    margin-right: -70px;
+  }
+
+  &.bar-chart {
+    width: 390px;
+  }
+}

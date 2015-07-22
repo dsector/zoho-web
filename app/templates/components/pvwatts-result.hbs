@@ -1,0 +1,32 @@
+<h1>PVWatts <span class="pull-right">{{acAnnual}} <span class="text-muted">kWh per Year</span></span></h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Month</th>
+        <th>Solar Radiation <br/>
+            (kWh / m<sup>2</sup> / day)
+        </th>
+        <th>
+            AC Energy <br/>
+            (kWh)
+        </th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+      {{#each data in result}}
+        <tr>
+            <td>{{data.month}}</td>
+            <td>{{data.solrad}}</td>
+            <td>{{data.ac}}</td>
+        </tr>
+      {{/each}}
+      <tr class="success">
+          <td><strong>Annual</strong></td>
+          <td>{{solradAnnual}}</td>
+          <td>{{acAnnual}}</td>
+      </tr>
+    </tbody>
+</table>

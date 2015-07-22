@@ -1,0 +1,38 @@
+<div id="presentation-slider">
+    <div class="presentation-border">
+      {{#if isFullScreen}}
+          <span class="glyphicon glyphicon-remove clickable fullscreen-button icon-white pull-right" {{action 'exitFullScreen'}}></span>
+      {{else}}
+          <span class="glyphicon glyphicon-fullscreen clickable fullscreen-button icon-white pull-right" {{action 'goFullScreen'}}></span>
+      {{/if}}
+    </div>
+    <div class="row">
+        <div class="col-md-1 presentation-arrow">
+          {{#if hasPrevSlide}}
+              <a {{action 'setSlide' 'prev'}}><h1 class="glyphicon glyphicon-chevron-left"></h1></a>
+          {{/if}}
+        </div>
+
+        <div class="col-md-10 presentation-content">
+          {{partial currentSlide}}
+        </div>
+
+        <div class="col-md-1 presentation-arrow">
+          {{#if hasNextSlide}}
+              <a {{action 'setSlide' 'next'}}><h1 class="glyphicon glyphicon-chevron-right"></h1></a>
+          {{/if}}
+        </div>
+    </div>
+  {{#if currentSlideFooter}}
+      <div class="footer">
+          <div class="presentation-footer">
+            {{partial currentSlideFooter}}
+              <div class="clearfix"></div>
+          </div>
+          <div class="presentation-border"></div>
+      </div>
+  {{else}}
+      <div class="presentation-border footer"></div>
+  {{/if}}
+</div>
+

@@ -9,9 +9,26 @@ export default Ember.Route.extend({
 
     controller.set('proposal', this.store.createRecord('proposal', {
       //utilityUsage: this.createRecord('')
-      potential: potential
+      potential: potential,
+      pvwatts: this.store.createRecord('proposal/pvwatt'),
+      design: this.store.createRecord('proposal/project-design')
     }));
 
+    this.store.findAll('setting').then(function(settings) {
+      var pv = controller.get('proposal.pvwatts'),
+        dc_ac_ratio = settings.findBy('name', 'dc_ac_ratio'),
+        inv_eff = settings.findBy('name', 'inv_eff'),
+        gcr = settings.findBy('name', 'gcr'),
+        ppw = settings.findBy('name', 'ppw');
+
+      pv.setProperties({
+        'dc_ac_ratio': dc_ac_ratio ? dc_ac_ratio.get('value') : null,
+        'inv_eff': inv_eff ? inv_eff.get('value') : null,
+        'gcr': gcr ? gcr.get('value') : null
+      });
+
+      controller.get('proposal.design').set('pricePerWatt', ppw ? ppw.get('value') : null);
+    });
 
     var utility = potential.get('utilityUsage');
 

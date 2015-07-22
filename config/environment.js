@@ -4,8 +4,9 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'zoho-web',
     environment: environment,
+    apiHost: '',
     baseURL: '/',
-    locationType: 'history',
+    locationType: 'hash',
     googleMap: {
       libraries: ['places']
     },
@@ -15,7 +16,10 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
+    PVWatts: {
+      apiKey: "GrbAaHGCAcgnWkMJi1lN79cZGEbGgExfnm0w1kiR",
+      host: "https://developer.nrel.gov/api/pvwatts/v5.json"
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -23,11 +27,16 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.apiHost = 'http://zoho.dev:8080';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+  }
+
+  if (environment === 'staging') {
+    ENV.apiHost = 'http://build.zoho.socketo.com:8080';
   }
 
   if (environment === 'test') {

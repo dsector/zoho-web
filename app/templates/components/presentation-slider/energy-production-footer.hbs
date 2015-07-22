@@ -1,0 +1,60 @@
+<div class="col-md-4">
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>System Size (DC) KW</td>
+            <td>{{proposal.pvwatts.system_capacity}}</td>
+        </tr>
+        <tr>
+            <td>Azimuth</td>
+            <td>{{proposal.pvwatts.azimuth}}</td>
+        </tr>
+        <tr>
+            <td>Tilt</td>
+            <td>{{proposal.pvwatts.tilt}}</td>
+        </tr>
+        <tr>
+            <td>Mounting Type</td>
+            <td>--</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="col-md-4">
+    <table class="table">
+        <tbody>
+          <tr>
+              <td>Solar module</td>
+              <td>{{proposal.pvwatts.moduleTypeName}}</td>
+          </tr>
+          <tr>
+              <td>Inverter</td>
+              <td>{{proposal.pvwatts.inv_eff}}%</td>
+          </tr>
+          <tr>
+              <td>Racking</td>
+              <td>{{proposal.pvwatts.arrayTypeName}}</td>
+          </tr>
+          <tr>
+              <td>Monitoring</td>
+              <td>--</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="col-md-4">
+    <table class="table">
+        <tbody>
+          <tr>
+              <td>Price Per Watt</td>
+              <td>{{proposal.design.pricePerWatt}}</td>
+          </tr>
+          <tr>
+              <td>Price Per Kwh</td>
+              <td>--</td>
+          </tr>
+        </tbody>
+    </table>
+</div>

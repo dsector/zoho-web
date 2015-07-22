@@ -12,7 +12,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Market profile name</label>
-                          {{input type="text" value=model.name class="form-control"}}
+                          {{input type="text" value=newProfile.name class="form-control"}}
                         </div>
                     </div>
                     <div class="col-md-2 pull-right">
@@ -34,28 +34,30 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {{#each item in model.items}}
+                        {{#each item in newProfile.items}}
                             <tr>
-                                <td>{{item.name}}</td>
+                                <td>{{item.product.name}}</td>
                                 <td>{{item.federal}}%</td>
                                 <td>{{item.state}}</td>
                                 <td>{{item.utility}}</td>
                                 <td>{{item.tax}}</td>
                                 <td>{{item.rebates}}</td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                </td>
                             </tr>
                         {{/each}}
                         <tr>
-                            <td>{{input type="text" class="form-control input-sm" value=item.name placeholder="Item name"}}</td>
-                            <td>{{input type="text" class="form-control input-sm" value=item.federal}}</td>
-                            <td>{{input type="text" class="form-control input-sm" value=item.state}}</td>
-                            <td>{{input type="text" class="form-control input-sm" value=item.utility}}</td>
-                            <td>{{input type="text" class="form-control input-sm" value=item.tax}}</td>
                             <td>
-                              {{input type="text" class="form-control input-sm" value=item.rebates}}
+                                {{view "select"
+                                  content=products
+                                  optionLabelPath="content.name"
+                                  value=newItem.product
+                                  class="form-control input-sm"
+                                }}
                             </td>
+                            <td>{{input type="text" class="form-control input-sm" value=newItem.federal}}</td>
+                            <td>{{input type="text" class="form-control input-sm" value=newItem.state}}</td>
+                            <td>{{input type="text" class="form-control input-sm" value=newItem.utility}}</td>
+                            <td>{{input type="text" class="form-control input-sm" value=newItem.tax}}</td>
+                            <td>{{input type="text" class="form-control input-sm" value=newItem.rebates}}</td>
                             <td>
                                 <button {{action 'addItem'}} class="btn btn-primary btn-sm">Add</button>
                             </td>
@@ -70,7 +72,7 @@
             </div>
 
         </div>
-      {{#each prof in controller.savedProfiles}}
+      {{#each prof in model}}
         <div class="panel panel-default">
             <div class="panel-heading">
               {{prof.name}}
@@ -92,7 +94,7 @@
                           <tbody>
                           {{#each it in prof.items}}
                               <tr>
-                                  <td>{{it.name}}</td>
+                                  <td>{{it.product.name}}</td>
                                   <td>{{it.federal}}%</td>
                                   <td>{{it.state}}</td>
                                   <td>{{it.utility}}</td>
@@ -103,19 +105,6 @@
                                   </td>
                               </tr>
                           {{/each}}
-                          <tr>
-                              <td>{{input type="text" class="form-control input-sm" value=item.name placeholder="Item name"}}</td>
-                              <td>{{input type="text" class="form-control input-sm" value=item.federal}}</td>
-                              <td>{{input type="text" class="form-control input-sm" value=item.state}}</td>
-                              <td>{{input type="text" class="form-control input-sm" value=item.utility}}</td>
-                              <td>{{input type="text" class="form-control input-sm" value=item.tax}}</td>
-                              <td>
-                                {{input type="text" class="form-control input-sm" value=item.rebates}}
-                              </td>
-                              <td>
-                                  <button {{action 'addSavedItem'}} class="btn btn-primary btn-sm">Add</button>
-                              </td>
-                          </tr>
                           </tbody>
                       </table>
                   </div>

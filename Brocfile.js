@@ -19,6 +19,10 @@ app.import('vendor/datatables/dataTables.bootstrap.js');
 //ember assets compilation
 app.import('bower_components/ember/ember-template-compiler.js');
 
+// pace
+app.import('bower_components/pace/pace.min.js');
+app.import('bower_components/pace/themes/silver/pace-theme-flash.css');
+
 app.import('vendor/jarvis.min.js');
 
 //d3pie chart

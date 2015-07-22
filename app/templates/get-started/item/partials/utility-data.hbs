@@ -1,7 +1,7 @@
-{{#get-started-slider action="setSlide" nextSlide="address" prevSlide="lookup"}}
+{{#get-started-slider action="setSlide" nextSlide="address" prevSlide="lookup" slideName="utility-data"}}
 
-
-
-  {{proposal/utility-widget potential=model}}
+  {{#widget-collspandable title="Utility data" collapsed=false}}
+    {{proposal/utility-widget potential=model}}
+  {{/widget-collspandable}}
 
 {{/get-started-slider}}

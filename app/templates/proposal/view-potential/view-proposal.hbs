@@ -1,31 +1,8 @@
 <div class="row">
-    <div class="col-md-4">
-        <table class="table table-striped table-bordered table-hover" width="100%">
-            <tbody>
-              <tr>
-                  <td class="">Pool Pump Savings</td>
-                  <td>{{ formulas/pump-formula energy=proposal.energy }}</td>
-              </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-md-8">
+    <div class="col-md-12">
+        <h4>Selected proposal: {{proposal.id}}</h4>
         <div class="step-container">
-          {{#widget-collspandable title="Energy Efficiency" widget-id="energy-efficiency-widget" }}
-            {{ proposal/energy-efficiency update="saveProposalToApi" energy=proposal.energy }}
-          {{/widget-collspandable}}
-        </div>
-
-        <div class="step-container">
-          {{#widget-collspandable title="Project Design" widget-id="project-design-widget" }}
-            {{proposal/project-design update="saveProposalToApi" project-design=proposal.design}}
-          {{/widget-collspandable}}
-        </div>
-
-        <div class="step-container">
-          {{#widget-collspandable title="Presentation" widget-id="action-buttons-widget"}}
-            {{proposal/action-buttons update="saveProposalToApi" proposal=proposal}}
-          {{/widget-collspandable}}
+            {{proposal/preview-bar proposal=proposal}}
         </div>
     </div>
 

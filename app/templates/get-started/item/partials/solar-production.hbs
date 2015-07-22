@@ -1,0 +1,63 @@
+{{#get-started-slider action="setSlide" nextSlide="financing" prevSlide="energy-efficiency" slideName="solar-production"}}
+
+
+  <div class="step-container" id="some-wrapper">
+      {{#each msg in pvWattsResult.errors}}
+        <div class="alert alert-danger">
+            {{msg}}
+        </div>
+      {{/each}}
+      {{#if pvWattsResult.incomplete}}
+        <div class="alert alert-warning">
+            You must complete all fields to process pvwatts.
+        </div>
+      {{/if}}
+      {{#if pvWattsResult.success}}
+        <div class="alert alert-success">
+            PVWatts successfully processed.
+        </div>
+      {{/if}}
+    {{#widget-collspandable title="System Info" widget-id="system-info-widget" collapsed=false}}
+        <div>
+            <form id="some-form">
+                <div class="form-group">
+                    <label>DC System size</label>
+                  {{input value=proposal.pvwatts.system_capacity class="form-control"}}
+                </div>
+                <div class="form-group">
+                    <label>Module Type</label>
+                  {{view "select"
+                  content=moduleTypes
+                  optionLabelPath="content.name"
+                  optionValuePath="content.value"
+                  value=proposal.pvwatts.module_type
+                  class="form-control"
+                  }}
+                </div>
+                <div class="form-group">
+                    <label>Array Type</label>
+                  {{view "select"
+                  content=arrayTypes
+                  optionLabelPath="content.name"
+                  optionValuePath="content.value"
+                  value=proposal.pvwatts.array_type
+                  class="form-control"
+                  }}
+                </div>
+                <div class="form-group">
+                    <label>System Losses (%)</label>
+                  {{input value=proposal.pvwatts.losses class="form-control"}}
+                </div>
+                <div class="form-group">
+                    <label>Tilt</label>
+                  {{input value=proposal.pvwatts.tilt class="form-control"}}
+                </div>
+                <div class="form-group">
+                    <label>Azimuth</label>
+                  {{input value=proposal.pvwatts.azimuth class="form-control"}}
+                </div>
+            </form>
+        </div>
+    {{/widget-collspandable}}
+  </div>
+{{/get-started-slider}}

@@ -1,0 +1,15 @@
+{{#each  item in proposal.selectedItems}}
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: {{item.rgbColorCss}};">
+              {{item.marketItem.product.name}}
+            </div>
+            <div class="panel-body">
+                <span>Avg. Monthly Savings: {{item.savingsCalculation.avgMonthlyKwhSavings}} kwh</span>
+                <br />
+                <span>Annal Savings: {{item.savingsCalculation.annualKwhSavings}} kwh</span>
+            </div>
+        </div>
+    </div>
+{{/each}}
+

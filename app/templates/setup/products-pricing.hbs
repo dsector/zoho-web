@@ -1,0 +1,80 @@
+<h1>Products and Pricing</h1>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Add new product</div>
+    <div class="panel-body">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Product name</label>
+              {{input value=newProduct.name class="form-control"}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Savings Calculation</label>
+                {{view "select"
+                  content=savingsCalculation
+                  optionValuePath="content.key"
+                  optionLabelPath="content.name"
+                  class="form-control"
+                  value=newProduct.savingsCalculation
+                }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Product pricing</label>
+                {{view "select"
+                  content=productPricing
+                  optionValuePath="content.key"
+                  optionLabelPath="content.name"
+                  value=newProduct.productPricing
+                  class="form-control"
+                }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Price ($)</label>
+                {{input value=newProduct.price class="form-control"}}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Cost</label>
+                {{input value=newProduct.cost class="form-control"}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-success" {{action "createProduct"}}>Create</button>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Saved products</div>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Savings Calculation</th>
+              <th>Product Pricing</th>
+              <th>Price</th>
+              <th>Cost</th>
+              <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each product in model}}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.savingsCalculationName}}</td>
+                <td>{{product.productPricingName}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.cost}}</td>
+                <td><a  {{action "deleteProduct" product}}>Delete</a></td>
+            </tr>
+          {{/each}}
+        </tbody>
+    </table>
+</div>

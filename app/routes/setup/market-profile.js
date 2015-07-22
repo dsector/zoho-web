@@ -3,14 +3,18 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   model: function() {
-    return this.store.createRecord('market-profile/profile');
+    return this.store.findAll('market-profile/profile');
   },
 
   setupController(controller, model) {
-    var savedProfiles = this.store.findAll('market-profile/profile');
+    var savedProducts = this.store.findAll('product');
+
+    savedProducts.then(function() {
+      controller.set('products', savedProducts);
+      controller.set('newProfile', controller.createNewProfile());
+      controller.set('newItem', controller.createNewItem());
+    });
 
     controller.set('model', model);
-    controller.set('savedProfiles', savedProfiles);
-    controller.set('item', this.store.createRecord('market-profile/item'));
   }
 });

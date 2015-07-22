@@ -1,10 +1,6 @@
 <div class="row">
-    <div class="col-md-4">
-      {{#widget-collspandable title="Potential Information" widget-id="potential-widget"}}
-        {{ proposal/view-table model=model }}
-      {{/widget-collspandable}}
-    </div>
-    <div class="col-md-8">
+
+    <div class="col-md-12">
       {{#widget-collspandable title="Proposals" widget-id="proposals-widget"}}
         {{ proposal/list-proposals table-id="proposal-table-list" proposals=model.proposals }}
       {{/widget-collspandable}}

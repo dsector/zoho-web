@@ -1,31 +1,112 @@
 import DS from 'ember-data';
 
+var priceKwh = 0.13;
+var kwhTax = 10;
+
 export default DS.Model.extend({
   sample: DS.attr('string'),
-  potential: DS.belongsTo('potential', {async: true}),
+  potential: DS.belongsTo('potential'),
   energy: DS.attr(),
   design: DS.attr(),
+  items: DS.hasMany('proposal/item', {
+    inverse: 'parentProposal'
+  }),
+  pvwatts: DS.belongsTo('proposal/pvwatt'),
+  ratePerPeriod: DS.attr(),
+  numberOfPeriods: DS.attr(),
 
+  calendar: function() {
+    return [
+      'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'sep', 'oct', 'nov', 'dec'
+    ];
+  }.property(),
+
+  colorItems: function () {
+    var colors = [
+        [64, 127, 170],
+        [64, 127, 200],
+        [64, 127, 235],
+        [64, 127, 250]
+      ],
+      items = this.get('items'),
+      i = 0;
+    items.forEach(function (item, index) {
+      item.set('rgbColor', colors[index]);
+    });
+  }.observes('items'),
+
+  /**
+   * Return selected items for this proposal
+   */
+  selectedItems: function() {
+    return this.get('items').filterBy('selected', true);
+  }.property('items.@each.selected'),
+
+  solarPrice: function() {
+    var ppw = this.get('design.pricePerWatt'),
+      dcSize = this.get('pvwatts.systemCapacityKw');
+
+    if (ppw && dcSize) {
+      return ppw * dcSize;
+    }
+
+    return 0;
+  }.property('design.pricePerWatt', 'pvwatts.systemCapacityKw'),
+
+  poolPumpPrice: function() {
+    var poolPump = this.get('items')
+      .filterBy('selected', true)
+      .findBy('marketItem.product.savingsCalculation', 'CALCULATION');
+
+    if (poolPump && poolPump.get('marketItem.product.productPricing') == 'EACH') {
+      return parseFloat(poolPump.get('marketItem.product.price'));
+    }
+
+    return 0;
+  }.property('items.@each.selected'),
+
+  /**
+   * Calculate the total price of system
+   */
+  // TODO add aeroseal cost
+  totalPrice: function() {
+    return this.get('solarPrice') + this.get('poolPumpPrice');
+  }.property('solarPrice', 'poolPumpPrice'),
+
+  monthlyRate: function() {
+    var r = this.get('ratePerPeriod'),
+      n = this.get('numberOfPeriods'),
+      pv = this.get('totalPrice');
+
+    if (!pv  || !n || !r) {
+      return 0;
+    }
+
+    r = r / 100;
+
+    return (
+      (r/12 * pv) /
+      (1 - Math.pow(1 + r/12, 0 - n))
+    );
+
+  }.property('totalPrice', 'ratePerPeriod', 'numberOfPeriods'),
 
   poolPumpSaving: function(){
-    var energy = this.get('energy');
+    var item = this.get('items').findBy('marketItem.product.savingsCalculation', 'CALCULATION'),
+      c = 0;
 
     if (
-      energy != null &&
-      energy.hoursUsed != null &&
-      energy.existingPoolPump != null &&
-      energy.newPoolPump != null
+      item != null &&
+      item.hoursUsed != null &&
+      item.existingDraw != null &&
+      item.newDraw != null
     ) {
-      var c = (energy.existingPoolPump-energy.newPoolPump);
-      c = c*energy.hoursUsed;
-      c = c*30;
-      c = c/1000;
-
-      return c;
+      c = (item.existingDraw - item.newDraw) * (item.hoursDaily * 30);
+      return c.toFixed(2);
     } else {
       return 0;
     }
-  }.property('energy'),
+  }.property('items.@each.selected'),
 
   aerosolMonthsSaving: function () {
     var potential = this.get('potential');
@@ -52,7 +133,6 @@ export default DS.Model.extend({
     }
 
     for (month in usageCalendar) {
-      //console.log(usageCalendar[month]);
       if(usageCalendar[month] != null){
         resultCalendar[month] = (Number(usageCalendar[month]) - Number(minimUsageFromMonth.value)) * 0.25;
       } else {
@@ -142,5 +222,22 @@ export default DS.Model.extend({
       nov: 1404,
       dec: 1092
     }
-  }.property()
+  }.property(),
+
+  billAfterSolar: function() {
+    var initialBill = this.get('potential.utilityUsage.avgElectricityBill') || 0,
+      acAnnual = this.get('pvwatts.ac_annual') || 0,
+      ppw = this.get('design.pricePerWatt') || 0;
+
+    if (initialBill == 0 || acAnnual == 0 || ppw == 0) {
+      return 0;
+    }
+
+    return initialBill - (acAnnual / 12) * priceKwh + kwhTax;
+
+  }.property('potential.utilityUsage.avgElectricityBill',
+    'design.pricePerWatt',
+    'pvwatts.ac_annual'
+  )
+
 });
