@@ -27,11 +27,6 @@ export default Ember.Component.extend({
     this.computeChart();
   }.observes('firstCalendar.changedMonths', 'secondCalendar.changedMonths'),
 
-  onStyleChanged: function() {
-    console.log('cacacacacacacaca');
-    this.computeChart()
-  }.observes('style'),
-
   computeChart: function() {
     var firstCalendar = this.get('firstCalendar');
     var secondCalendar = this.get('secondCalendar');

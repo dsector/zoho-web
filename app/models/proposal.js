@@ -75,8 +75,6 @@ export default DS.Model.extend({
       n = this.get('numberOfPeriods'),
       pv = this.get('totalPrice');
 
-    console.log('Calculating:', r, n, pv);
-
     if (!pv  || !n || !r) {
       return 0;
     }
@@ -132,7 +130,6 @@ export default DS.Model.extend({
     }
 
     for (month in usageCalendar) {
-      //console.log(usageCalendar[month]);
       if(usageCalendar[month] != null){
         resultCalendar[month] = (Number(usageCalendar[month]) - Number(minimUsageFromMonth.value)) * 0.25;
       } else {
