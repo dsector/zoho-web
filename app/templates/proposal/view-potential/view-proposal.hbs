@@ -2,9 +2,7 @@
     <div class="col-md-12">
         <h4>Selected proposal: {{proposal.id}}</h4>
         <div class="step-container">
-          {{#widget-collspandable title="Presentation" widget-id="action-buttons-widget"}}
-            {{proposal/action-buttons update="saveProposalToApi" proposal=proposal}}
-          {{/widget-collspandable}}
+            {{proposal/preview-bar proposal=proposal}}
         </div>
     </div>
 
