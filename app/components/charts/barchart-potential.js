@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+  style: undefined,
   width: 800,
   height: 400,
   firstCalendar: Ember.Object.create(),
@@ -26,6 +27,10 @@ export default Ember.Component.extend({
     this.computeChart();
   }.observes('firstCalendar.changedMonths', 'secondCalendar.changedMonths'),
 
+  onStyleChanged: function() {
+    console.log('cacacacacacacaca');
+    this.computeChart()
+  }.observes('style'),
 
   computeChart: function() {
     var firstCalendar = this.get('firstCalendar');

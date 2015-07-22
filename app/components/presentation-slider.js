@@ -2,6 +2,18 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+  isFullScreen: false,
+
+  barChartStyle: function() {
+    var is = this.get('isFullScreen');
+
+    if (is) {
+      return "width: 100%;height: 400px;";
+    } else {
+      return "width: 100%; height: 400px;";
+    }
+  }.property('isFullScreen'),
+
   nameSpace: "components/presentation-slider",
   slides: [
     'introduction',
@@ -57,6 +69,35 @@ export default Ember.Component.extend({
     return index > 0;
   }.property('currentSlideIndex'),
 
+  toggleFullscreenClass: function() {
+    var element = this.$('#presentation-slider'),
+      is = this.get('isFullScreen');
+
+    if (is) {
+      element.addClass('full-screen');
+    } else {
+      element.removeClass('full-screen');
+    }
+  }.observes('isFullScreen'),
+
+  didInsertElement: function() {
+    var elem = document.getElementById("presentation-slider"),
+      self = this,
+      exitHandler = function() {
+        var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+        var fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled;
+
+        if (!fullscreenElement)
+        {
+          self.set('isFullScreen', false);
+        }
+      };
+
+    document.addEventListener('webkitfullscreenchange', exitHandler, false);
+    document.addEventListener('mozfullscreenchange', exitHandler, false);
+    document.addEventListener('fullscreenchange', exitHandler, false);
+    document.addEventListener('MSFullscreenChange', exitHandler, false);
+  },
 
   actions: {
     setSlide: function (direction) {
@@ -67,6 +108,33 @@ export default Ember.Component.extend({
         this.set('currentSlideIndex', index + 1);
       } else if (direction === 'prev' && index > 0) {
         this.set('currentSlideIndex', index - 1);
+      }
+    },
+
+    goFullScreen: function() {
+      var elem = document.getElementById("presentation-slider");
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      }
+      this.set('isFullScreen', true);
+    },
+
+    exitFullScreen: function() {
+      this.set('isFullScreen', false);
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
       }
     }
   }
