@@ -14,8 +14,9 @@ export default Ember.View.extend({
 
       var markers = [];
       var map = new google.maps.Map(canvas, {
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
         center: new google.maps.LatLng(39.5, -98.35),
+        mapTypeControl: false,
         zoom: 4
       });
 
