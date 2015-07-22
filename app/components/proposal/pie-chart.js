@@ -12,7 +12,7 @@ export default Ember.Component.extend({
           "font": "open sans"
         },
         "subtitle": {
-          "color": "#999999",
+          "color": "#ffffff",
           "fontSize": 12,
           "font": "open sans"
         },
@@ -51,20 +51,23 @@ export default Ember.Component.extend({
       "labels": {
         "outer": {
           "format": "none",
-          "pieDistance": 32
+          "pieDistance": 10,
+          hideWhenLessThanPercentage: true
         },
         "inner": {
+          //"format": "label-percentage2",
           "hideWhenLessThanPercentage": 3
         },
         "mainLabel": {
-          "fontSize": 11
+          "fontSize": 11,
+          color: "#ffffff"
         },
         "percentage": {
           "color": "#ffffff",
           "decimalPlaces": 0
         },
         "value": {
-          "color": "#adadad",
+          "color": "#ffffff",
           "fontSize": 11
         },
         "lines": {
@@ -81,6 +84,10 @@ export default Ember.Component.extend({
         "gradient": {
           "enabled": true,
           "percentage": 100
+        },
+        pieCenterOffset: {
+          x: -40,
+          y: -40
         }
       }
     });

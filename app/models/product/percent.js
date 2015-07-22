@@ -27,7 +27,6 @@ export default DS.Model.extend({
 
   monthlyKwhSavings: function() {
     var potential = this.get('parentItem.proposal.potential');
-    console.log('Potential:', potential.get('potentialName'));
     var utilityUsage = potential.get('utilityUsage');
     var calendar = this.get('parentItem.proposal.calendar');
     if(utilityUsage==null){
@@ -48,8 +47,6 @@ export default DS.Model.extend({
         resultCalendar[month] = null;
       }
     });
-
-    console.log('Percent monthly:', minimumUsage, resultCalendar, usageCalendar);
 
     return resultCalendar;
   }.property('parentItem.proposal.potential.utilityUsage.usageCalendar.changedMonths')

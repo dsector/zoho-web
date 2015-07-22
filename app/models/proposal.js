@@ -1,5 +1,8 @@
 import DS from 'ember-data';
 
+var priceKwh = 0.13;
+var kwhTax = 10;
+
 export default DS.Model.extend({
   sample: DS.attr('string'),
   potential: DS.belongsTo('potential'),
@@ -84,7 +87,7 @@ export default DS.Model.extend({
     return (
       (r/12 * pv) /
       (1 - Math.pow(1 + r/12, 0 - n))
-    ).toFixed(2);
+    );
 
   }.property('totalPrice', 'ratePerPeriod', 'numberOfPeriods'),
 
@@ -219,5 +222,22 @@ export default DS.Model.extend({
       nov: 1404,
       dec: 1092
     }
-  }.property()
+  }.property(),
+
+  billAfterSolar: function() {
+    var initialBill = this.get('potential.utilityUsage.avgElectricityBill') || 0,
+      acAnnual = this.get('pvwatts.ac_annual') || 0,
+      ppw = this.get('design.pricePerWatt') || 0;
+
+    if (initialBill == 0 || acAnnual == 0 || ppw == 0) {
+      return 0;
+    }
+
+    return initialBill - (acAnnual / 12) * priceKwh + kwhTax;
+
+  }.property('potential.utilityUsage.avgElectricityBill',
+    'design.pricePerWatt',
+    'pvwatts.ac_annual'
+  )
+
 });

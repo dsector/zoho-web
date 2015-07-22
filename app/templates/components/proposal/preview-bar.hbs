@@ -1,13 +1,13 @@
 <div class="panel panel-default panel-no-bg">
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-4">
+            <div class="preview-bar-item items-table">
                 <table class="table borderless">
                     <thead>
                     <tr>
                         <th>Item</th>
                         <th>Pricing</th>
-                        <th>Savings</th>
+                        <th>Offset</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -16,7 +16,7 @@
                           <tr>
                               <td>{{item.marketItem.product.name}}</td>
                               <td>${{item.marketItem.product.price}} {{item.product.productPricingName}}</td>
-                              <td>{{item.marketItem.product.savingsCalculationName}}</td>
+                              <td>{{numberFormat item.savingsCalculation.annualKwhSavings 0}} KWh</td>
                           </tr>
                       {{/if}}
                     {{/each}}
@@ -29,10 +29,10 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="preview-bar-item pie-chart">
               {{proposal/pie-chart proposal=proposal}}
             </div>
-            <div class="col-md-4">
+            <div class="preview-bar-item bar-chart">
               {{
               charts/barchart-potential
               chart-id="barchart-bottom"
@@ -40,6 +40,15 @@
               firstCalendar=proposal.potential.utilityUsage.usageCalendar
               secondCalendar=proposal.potential.utilityUsage.billCalendar
               }}
+            </div>
+
+            <div class="preview-bar-item payment-savings">
+                <strong>Payment Savings</strong><br /><br />
+                Bill Before Solar: ${{numberFormat proposal.potential.utilityUsage.avgElectricityBill 0}} / month
+                <br /><br />
+                Bill After Solar:  ${{numberFormat proposal.billAfterSolar 0}} / month
+                <br /><br />
+                Finance Payment: ${{numberFormat proposal.monthlyRate 0}} / month
             </div>
         </div>
     </div>
