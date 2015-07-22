@@ -43,7 +43,6 @@ export default Router.map(function() {
     this.route('products-services');
     this.route('pv-watts');
     this.route('company-info');
-    this.route('contract');
     this.route('marketprofile');
   });
 });
